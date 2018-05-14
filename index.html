@@ -1,15 +1,2609 @@
-<html>
-<head>
-  <title>Capstone Project</title>
-  <meta name="description" content="Data Science for Good: Donors Choose"/>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <h1><a href="https://www.kaggle.com/donorschoose/io">Donors Choose Kernel on Kaggle</a></h1>
-  <p>For the final capstone project for the Data Analytics Program I will use this data to develop a model.</p>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="footer">
-  <p></p>
+<head>
+  <meta charset="utf-8">
+  <title>Jupyter Notebook Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Michael DeGraff">
+  
+  <meta name="robots" content="noindex,nofollow">
+ 
+ 
+  <script src="/cdn-cgi/apps/head/MuIIl4I_IVFkxldaVu1mdWee9as.js"></script><link href="/static/build/styles.css?v=af7ff69ae1abb8954a21dbb2241d4e24" rel="stylesheet">
+
+  <link rel="shortcut icon" href="/static/ico/ipynb_icon_16x16.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/static/ico/apple-touch-icon-144-precomposed.png?v=5a3c9ede93e2a8b8ea9e3f8f3da1a905">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="/static/ico/apple-touch-icon-114-precomposed.png?v=45d86fc8f24dc00638035e1dd7a6d898">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="/static/ico/apple-touch-icon-72-precomposed.png?v=540b5eb0f3cfd25f1439d1c9bd30e15f">
+  <link rel="apple-touch-icon-precomposed"
+        href="/static/ico/apple-touch-icon-57-precomposed.png?v=225f0590e187e1458625654f10a28f56">
+
+  
+    <link href="/static/build/notebook.css?v=70404d2166a8ab8949e8e1cdff07b91f" rel="stylesheet">
+  
+
+  
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      init_mathjax = function() {
+        if (window.MathJax) {
+          // MathJax loaded
+          MathJax.Hub.Config({
+            TeX: {
+              equationNumbers: {
+                autoNumber: "AMS",
+                useLabelIds: true
+              }
+            },
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+            },
+            displayAlign: 'center',
+            "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+            }
+          });
+          MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+      }
+      init_mathjax();
+    </script>
+  
+
+  
+    <script>
+      (function() {
+        function addWidgetsRenderer() {
+          var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+          var scriptElement = document.createElement('script');
+          var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+          var widgetState;
+
+          try {
+            widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+            if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+              widgetRendererSrc = 'https://unpkg.com/jupyter-js-widgets@*/dist/embed.js';
+            }
+          } catch(e) {}
+
+          scriptElement.src = widgetRendererSrc;
+          document.body.appendChild(scriptElement);
+        }
+
+        document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+      }());
+    </script>
+  
+
+</head>
+
+<body class="nbviewer">
+
+  <!-- These are loaded at the top of the body so they are available to
+       notebook cells when they are loaded below. -->
+  <script src="/static/components/jquery/dist/jquery.min.js?v=a09e13ee94d51c524b7e2a728c7d4039"></script>
+  <script src="/static/components/requirejs/require.js?v=6da8be361b9ee26c5e721e76c6d4afce"></script>
+  <script src="/static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043"></script>
+<!-- Navbar
+================================================== -->
+  <nav id="menubar" class="navbar navbar-default navbar-fixed-top" data-spy="affix">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/nav_logo.svg?v=479cefe8d932fb14a67b93911b97d70f" width="159"/>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="active" href="http://jupyter.org">JUPYTER</a>
+          </li>
+          <li>
+    <a href="/faq" title="FAQ" >
+      
+        <span>FAQ</span>
+      
+    </a>
+  </li>
+
+          
+  
+    
+      
+        <li>
+    <a href="/format/script/github/mwadegraff/DonorsChoose/blob/master/DC%20EDA%20and%20Recommender.ipynb" title="View as Code" >
+      <span class="fa fa-code fa-2x menu-icon"></span>
+      <span class="menu-text">View as Code</span>
+    </a>
+  </li>
+      
+    
+  
+    
+  
+
+  
+    <li>
+    <a href="#" title="Python 3 Kernel" >
+      <span class="fa fa-server fa-2x menu-icon"></span>
+      <span class="menu-text">Python 3 Kernel</span>
+    </a>
+  </li>
+  
+
+  
+    <li>
+    <a href="https://github.com/mwadegraff/DonorsChoose/blob/master/DC%20EDA%20and%20Recommender.ipynb" title="View on GitHub" >
+      <span class="fa fa-github fa-2x menu-icon"></span>
+      <span class="menu-text">View on GitHub</span>
+    </a>
+  </li>
+  
+
+  <li>
+    <a href="https://raw.githubusercontent.com/mwadegraff/DonorsChoose/master/DC%20EDA%20and%20Recommender.ipynb" title="Download Notebook" download>
+      <span class="fa fa-download fa-2x menu-icon"></span>
+      <span class="menu-text">Download Notebook</span>
+    </a>
+  </li>
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      
+      
+    </div>
+  </nav>
+
+  <div class="container container-main">
+    
+  
+  <ol class="breadcrumb">
+    
+      <li>
+        <a href="/github/mwadegraff/DonorsChoose/tree/master">DonorsChoose</a>
+      </li>
+    
+      <li>
+        <a href="/github/mwadegraff/DonorsChoose/tree/master/DC EDA and Recommender.ipynb">DC EDA and Recommender.ipynb</a>
+      </li>
+    
+  </ol>
+  
+  <div id="notebook">
+    <div id="notebook-container">
+      
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="DonorsChoose:-Donor-Project-Matching-with-Recommender-Systems">DonorsChoose: Donor-Project Matching with Recommender Systems<a class="anchor-link" href="#DonorsChoose:-Donor-Project-Matching-with-Recommender-Systems">&#182;</a></h1><p>Data and project idea come from a <a href="https://www.kaggle.com/donorschoose/io">Kaggle compitition</a>.
+Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmoreira/recommender-systems-in-python-101/code">tutorial</a> by <a href="https://www.kaggle.com/gspmoreira">Gabriel Moreira</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Donors-Choose">Donors Choose<a class="anchor-link" href="#Donors-Choose">&#182;</a></h1><p>Founded in 2000 by a Bronx history teacher, DonorsChoose.org has raised $685 million for America's classrooms. Teachers at three-quarters of all the public schools in the U.S. have come to DonorsChoose.org to request what their students need, making DonorsChoose.org the leading platform for supporting public education.</p>
+<p>To date, 3 million people and partners have funded 1.1 million DonorsChoose.org projects. But teachers still spend more than a billion dollars of their own money on classroom materials. To get students what they need to learn, the team at DonorsChoose.org needs to be able to connect donors with the projects that most inspire them.</p>
+<p>In the second Kaggle Data Science for Good challenge, DonorsChoose.org, in partnership with Google.org, is inviting the community to help them pair up donors to the classroom requests that will most motivate them to make an additional gift. To support this challenge, DonorsChoose.org has supplied anonymized data on donor giving from the past five years. The winning methods will be implemented in DonorsChoose.org email marketing campaigns.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Problem-Statement">Problem Statement<a class="anchor-link" href="#Problem-Statement">&#182;</a></h1><p>DonorsChoose.org has funded over 1.1 million classroom requests through the support of 3 million donors, the majority of whom were making their first-ever donation to a public school. If DonorsChoose.org can motivate even a fraction of those donors to make another donation, that could have a huge impact on the number of classroom requests fulfilled.</p>
+<p>A good solution will enable DonorsChoose.org to build targeted email campaigns recommending specific classroom requests to prior donors. Part of the challenge is to assess the needs of the organization, uncover insights from the data available, and build the right solution for this problem. Submissions will be evaluated on the following criteria:</p>
+<p>Performance - How well does the solution match donors to project requests to which they would be motivated to donate? DonorsChoose.org will not be able to live test every submission, so a strong entry will clearly articulate why it will be effective at motivating repeat donations.</p>
+<p>Adaptable - The DonorsChoose.org team wants to put the winning submissions to work, quickly. Therefore a good entry will be easy to implement in production.</p>
+<p>Intelligible - A good entry should be easily understood by the DonorsChoose.org team should it need to be updated in the future to accommodate a changing marketplace.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Proposed-Solution">Proposed Solution<a class="anchor-link" href="#Proposed-Solution">&#182;</a></h1><p>I will address the problem by using <a href="https://en.wikipedia.org/wiki/Recommender_system">Recommender System</a> (RecSys) techniques. The objective of a RecSys is to recommend relevant items for users, based on their preference. Preference and relevance are subjective, and they are generally inferred by items users have consumed previously.</p>
+<p>The main RecSys techniques are:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Collaborative_filtering"><strong>Collaborative Filtering</strong></a>: This method makes automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (collaborating). The underlying assumption of the collaborative filtering approach is that if a person A has the same opinion as a person B on a set of items, A is more likely to have B's opinion for a given item than that of a randomly chosen person.   </li>
+<li><a href="http://recommender-systems.org/content-based-filtering/"><strong>Content-Based Filtering</strong></a>: This method uses only information about the description and attributes of the items users has previously consumed to model user's preferences. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past (or is examining in the present). In particular, various candidate items are compared with items previously rated by the user and the best-matching items are recommended.  </li>
+<li><strong>Hybrid methods</strong>:  Recent research has demonstrated that a hybrid approach, combining collaborative filtering and content-based filtering could be more effective than pure approaches in some cases. These methods can also be used to overcome some of the common problems in recommender systems such as cold start and the sparsity problem.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Load-libraries">Load libraries<a class="anchor-link" href="#Load-libraries">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#enable auto complete</span>
+<span class="o">%</span><span class="k">config</span> IPCompleter.greedy=True
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># package for high-performance, easy-to-use data structures and data analysis</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># fundamental package for scientific computing with Python</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># for plotting</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1"># for making plots with seaborn</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="k">import</span> <span class="n">svds</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span>
+
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="k">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="k">import</span> <span class="n">cosine_similarity</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;../input&quot;</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
+<span class="c1"># Supress unnecessary warnings so that presentation looks clean</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print all rows and columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Schools.csv&#39;, &#39;Donations.csv&#39;, &#39;Resources.csv&#39;, &#39;Donors.csv&#39;, &#39;Teachers.csv&#39;, &#39;Projects.csv&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Load-data">Load data<a class="anchor-link" href="#Load-data">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">projects</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Projects.csv&#39;</span><span class="p">)</span>
+<span class="n">donations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Donations.csv&#39;</span><span class="p">)</span>
+<span class="n">donors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Donors.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">schools</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Schools.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">teachers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Teachers.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">resources</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Resources.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">warn_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39; donations: &#39;</span><span class="p">,</span><span class="n">donations</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="s1">&#39;donors: &#39;</span><span class="p">,</span><span class="n">donors</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="s1">&#39;schools&#39;</span><span class="p">,</span><span class="n">schools</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="s1">&#39;teachers&#39;</span><span class="p">,</span><span class="n">teachers</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="s1">&#39;projects&#39;</span><span class="p">,</span><span class="n">teachers</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="s1">&#39;resources&#39;</span><span class="p">,</span><span class="n">resources</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> donations:  (4687884, 7) 
+ donors:  (2122640, 5) 
+ schools (72993, 9) 
+ teachers (402900, 3) 
+ projects (402900, 3) 
+ resources (7210448, 5)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Set-up-test-mode-where-only-10000-rows-of-donation/donor-dataframe-are-used.">Set up test mode where only 10000 rows of donation/donor dataframe are used.<a class="anchor-link" href="#Set-up-test-mode-where-only-10000-rows-of-donation/donor-dataframe-are-used.">&#182;</a></h3><p>When testing is complete we will need to turn off test mode.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up test mode to save some time</span>
+<span class="n">test_mode</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Merge datasets</span>
+<span class="n">donations</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">donors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Donor ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">projects</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;Project ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="c1"># only load a few lines in test mode</span>
+<span class="k">if</span> <span class="n">test_mode</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">donations_df</span> <span class="o">=</span> <span class="n">df</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of df is &#39;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>shape of df is  (10000, 25)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df -&gt; donors + donations</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of df is &#39;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>shape of df is  (10000, 25)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="EDA">EDA<a class="anchor-link" href="#EDA">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Project ID</th>
+      <th>Donation ID</th>
+      <th>Donor ID</th>
+      <th>Donation Included Optional Donation</th>
+      <th>Donation Amount</th>
+      <th>Donor Cart Sequence</th>
+      <th>Donation Received Date</th>
+      <th>Donor City</th>
+      <th>Donor State</th>
+      <th>Donor Is Teacher</th>
+      <th>Donor Zip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>688729120858666221208529ee3fc18e</td>
+      <td>1f4b5b6e68445c6c4a0509b3aca93f38</td>
+      <td>No</td>
+      <td>178.37</td>
+      <td>11</td>
+      <td>2016-08-23 13:15:57</td>
+      <td>West Jordan</td>
+      <td>Utah</td>
+      <td>No</td>
+      <td>840</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>dcf1071da3aa3561f91ac689d1f73dee</td>
+      <td>4aaab6d244bf3599682239ed5591af8a</td>
+      <td>Yes</td>
+      <td>25.00</td>
+      <td>2</td>
+      <td>2016-06-06 20:05:23</td>
+      <td>Riverton</td>
+      <td>Utah</td>
+      <td>Yes</td>
+      <td>840</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>18a234b9d1e538c431761d521ea7799d</td>
+      <td>0b0765dc9c759adc48a07688ba25e94e</td>
+      <td>Yes</td>
+      <td>20.00</td>
+      <td>3</td>
+      <td>2016-06-06 14:08:46</td>
+      <td>Riverton</td>
+      <td>Utah</td>
+      <td>No</td>
+      <td>840</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>38d2744bf9138b0b57ed581c76c0e2da</td>
+      <td>377944ad61f72d800b25ec1862aec363</td>
+      <td>Yes</td>
+      <td>25.00</td>
+      <td>1</td>
+      <td>2016-05-15 10:23:04</td>
+      <td>Phoenix</td>
+      <td>Arizona</td>
+      <td>No</td>
+      <td>850</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>5a032791e31167a70206bfb86fb60035</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>Yes</td>
+      <td>25.00</td>
+      <td>2</td>
+      <td>2016-05-17 01:23:38</td>
+      <td>Salt Lake City</td>
+      <td>Utah</td>
+      <td>Yes</td>
+      <td>841</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Donor ID</th>
+      <th>Donor City</th>
+      <th>Donor State</th>
+      <th>Donor Is Teacher</th>
+      <th>Donor Zip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00000ce845c00cbf0686c992fc369df4</td>
+      <td>Evanston</td>
+      <td>Illinois</td>
+      <td>No</td>
+      <td>602</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00002783bc5d108510f3f9666c8b1edd</td>
+      <td>Appomattox</td>
+      <td>other</td>
+      <td>No</td>
+      <td>245</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00002d44003ed46b066607c5455a999a</td>
+      <td>Winton</td>
+      <td>California</td>
+      <td>Yes</td>
+      <td>953</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00002eb25d60a09c318efbd0797bffb5</td>
+      <td>Indianapolis</td>
+      <td>Indiana</td>
+      <td>No</td>
+      <td>462</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0000300773fe015f870914b42528541b</td>
+      <td>Paterson</td>
+      <td>New Jersey</td>
+      <td>No</td>
+      <td>075</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>00004c31ce07c22148ee37acd0f814b9</td>
+      <td>NaN</td>
+      <td>other</td>
+      <td>No</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>00004e32a448b4832e1b993500bf0731</td>
+      <td>Stamford</td>
+      <td>Connecticut</td>
+      <td>No</td>
+      <td>069</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>00004fa20a986e60a40262ba53d7edf1</td>
+      <td>Green Bay</td>
+      <td>Wisconsin</td>
+      <td>No</td>
+      <td>543</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>00005454366b6b914f9a8290f18f4aed</td>
+      <td>Argyle</td>
+      <td>New York</td>
+      <td>No</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0000584b8cdaeaa6b3de82be509db839</td>
+      <td>Valparaiso</td>
+      <td>Indiana</td>
+      <td>No</td>
+      <td>463</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">schools</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>School ID</th>
+      <th>School Name</th>
+      <th>School Metro Type</th>
+      <th>School Percentage Free Lunch</th>
+      <th>School State</th>
+      <th>School Zip</th>
+      <th>School City</th>
+      <th>School County</th>
+      <th>School District</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00003e0fdd601b8ea0a6eb44057b9c5e</td>
+      <td>Capon Bridge Middle School</td>
+      <td>rural</td>
+      <td>56.0</td>
+      <td>West Virginia</td>
+      <td>26711</td>
+      <td>Capon Bridge</td>
+      <td>Hampshire</td>
+      <td>Hampshire Co School District</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00004e32a448b4832e1b993500bf0731</td>
+      <td>The Woodlands College Park High School</td>
+      <td>urban</td>
+      <td>41.0</td>
+      <td>Texas</td>
+      <td>77384</td>
+      <td>The Woodlands</td>
+      <td>Montgomery</td>
+      <td>Conroe Ind School District</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0002021bb799f28de224f1acc1ff08c4</td>
+      <td>Samantha Smith Elementary School</td>
+      <td>suburban</td>
+      <td>2.0</td>
+      <td>Washington</td>
+      <td>98074</td>
+      <td>Sammamish</td>
+      <td>King</td>
+      <td>Lake Washington Sch Dist 414</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teachers</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Teacher ID</th>
+      <th>Teacher Prefix</th>
+      <th>Teacher First Project Posted Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00000f7264c27ba6fea0c837ed6aa0aa</td>
+      <td>Mrs.</td>
+      <td>2013-08-21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00002d44003ed46b066607c5455a999a</td>
+      <td>Mrs.</td>
+      <td>2016-10-23</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00006084c3d92d904a22e0a70f5c119a</td>
+      <td>Mr.</td>
+      <td>2016-09-08</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="c1">#teachers[&#39;Teacher Prefix&#39;].plot(kind = &#39;bar&#39;)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Teacher Prefix&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">teachers</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuoAAAF3CAYAAADzd26mAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
+dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzt3X+0XWV95/H3x6Qo2lJQgiIhgjb9
+gVQjpMjoslpRCHRqsMsfMFWipRN1oNWZtiO2o1CVqY5alY7ShSUCrRXwV0lnoojUpUsFJCDywx9N
+pFYiFCIoolgc8Dt/nOeWQzi5ueA99zz35v1a66yzz3c/z97Pzl735HP3fc4+qSokSZIk9eUhkx6A
+JEmSpPszqEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhL
+kiRJHTKoS5IkSR1aPOkB9GLPPfes/fbbb9LDkCRJ0gJ3xRVXfKeqluyonUG92W+//di4ceOkhyFJ
+kqQFLsm/zKSdU18kSZKkDhnUJUmSpA4Z1CVJkqQOGdQlSZKkDhnUJUmSpA4Z1CVJkqQOGdQlSZKk
+DhnUJUmSpA4Z1CVJkqQOGdQlSZKkDhnUJUmSpA4Z1CVJkqQOGdQlSZKkDi0e14aT7AucAzwG+Alw
+RlW9O8kjgfOA/YBvAi+qqu8mCfBu4CjgTuBlVXVl29Ya4H+0Tb+5qs5u9YOBs4BdgQ3Aq6uqtreP
+2Tq2g//4nNnalKZxxduOm/QQJEmSJmacV9TvBv6wqn4FOBQ4IckBwEnAxVW1HLi4vQY4EljeHmuB
+0wFa6D4ZeCpwCHBykj1an9Nb26l+q1p9e/uQJEmS5oWxBfWqumnqinhV3QF8FdgHWA2c3ZqdDRzd
+llcD59TApcDuSfYGjgAuqqrb2lXxi4BVbd1uVXVJVRWDq/fD2xq1D0mSJGlemJM56kn2A54CXAY8
+uqpugkGYB/ZqzfYBbhjqtqXVpqtvGVFnmn1sO661STYm2bh169YHe3iSJEnSrBt7UE/ys8BHgNdU
+1fenazqiVg+iPmNVdUZVrayqlUuWLHkgXSVJkqSxGmtQT/IzDEL6B6rqo618c5u2Qnu+pdW3APsO
+dV8K3LiD+tIR9en2IUmSJM0LYwvq7S4uZwJfraq/GFq1HljTltcAFwzVj8vAocDtbdrKhcDhSfZo
+HyI9HLiwrbsjyaFtX8dts61R+5AkSZLmhbHdnhF4OvBS4JokV7XanwBvAc5PcjzwLeCFbd0GBrdm
+3Mzg9owvB6iq25K8Cbi8tXtjVd3Wll/Fvbdn/Hh7MM0+JEmSpHlhbEG9qj7H6HnkAIeNaF/ACdvZ
+1jpg3Yj6RuDAEfVbR+1DkiRJmi/8ZlJJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMG
+dUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1
+SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJ
+kiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUNjC+pJ
+1iW5Jcm1Q7XzklzVHt9MclWr75fkR0Pr/mqoz8FJrkmyOclpSdLqj0xyUZJN7XmPVk9rtznJ1UkO
+GtcxSpIkSeMyzivqZwGrhgtV9eKqWlFVK4CPAB8dWv2NqXVV9cqh+unAWmB5e0xt8yTg4qpaDlzc
+XgMcOdR2besvSZIkzStjC+pV9VngtlHr2lXxFwEfnG4bSfYGdquqS6qqgHOAo9vq1cDZbfnsbern
+1MClwO5tO5IkSdK8Mak56s8Abq6qTUO1/ZN8Kclnkjyj1fYBtgy12dJqAI+uqpsA2vNeQ31u2E4f
+SZIkaV5YPKH9Hst9r6bfBCyrqluTHAz8fZInAhnRt3aw7Rn3SbKWwfQYli1btsNBS5IkSXNlzq+o
+J1kM/DZw3lStqu6qqlvb8hXAN4BfZHA1fOlQ96XAjW355qkpLe35llbfAuy7nT73UVVnVNXKqlq5
+ZMmSn/bQJEmSpFkziakvzwG+VlX/PqUlyZIki9ry4xl8EPT6NqXljiSHtnntxwEXtG7rgTVtec02
+9ePa3V8OBW6fmiIjSZIkzRfjvD3jB4FLgF9KsiXJ8W3VMdz/Q6S/Dlyd5MvAh4FXVtXUB1FfBfw1
+sJnBlfaPt/pbgOcm2QQ8t70G2ABc39q/D/gvs31skiRJ0riNbY56VR27nfrLRtQ+wuB2jaPabwQO
+HFG/FThsRL2AEx7gcCVJkqSu+M2kkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqS
+JElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIk
+SVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJ
+UocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHxhbUk6xL
+ckuSa4dqpyT5dpKr2uOooXWvS7I5ydeTHDFUX9Vqm5OcNFTfP8llSTYlOS/JLq3+0PZ6c1u/37iO
+UZIkSRqXcV5RPwtYNaL+zqpa0R4bAJIcABwDPLH1eW+SRUkWAe8BjgQOAI5tbQHe2ra1HPgucHyr
+Hw98t6p+AXhnaydJkiTNK2ML6lX1WeC2GTZfDZxbVXdV1T8Dm4FD2mNzVV1fVT8GzgVWJwnwbODD
+rf/ZwNFD2zq7LX8YOKy1lyRJkuaNScxRPzHJ1W1qzB6ttg9ww1CbLa22vfqjgO9V1d3b1O+zrbb+
+9tZekiRJmjfmOqifDjwBWAHcBLyj1Udd8a4HUZ9uW/eTZG2SjUk2bt26dbpxS5IkSXNqToN6Vd1c
+VfdU1U+A9zGY2gKDK+L7DjVdCtw4Tf07wO5JFm9Tv8+22vqfZztTcKrqjKpaWVUrlyxZ8tMeniRJ
+kjRr5jSoJ9l76OXzgak7wqwHjml3bNkfWA58EbgcWN7u8LILgw+crq+qAj4NvKD1XwNcMLStNW35
+BcA/tvaSJEnSvLF4x00enCQfBJ4F7JlkC3Ay8KwkKxhMRfkm8AqAqrouyfnAV4C7gROq6p62nROB
+C4FFwLqquq7t4rXAuUneDHwJOLPVzwT+JslmBlfSjxnXMUqSJEnjMragXlXHjiifOaI21f5U4NQR
+9Q3AhhH167l36sxw/d+AFz6gwUqSJEmd8ZtJJUmSpA4Z1CVJkqQOjW3qiyTNtqf/5dMnPYSdwud/
+//OTHoIkCa+oS5IkSV0yqEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhLkiRJHTKoS5IkSR0y
+qEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhLkiRJHTKo
+S5IkSR0yqEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhLkiRJHTKoS5IkSR0yqEuSJEkdMqhL
+kiRJHTKoS5IkSR0yqEuSJEkdMqhLkiRJHRpbUE+yLsktSa4dqr0tydeSXJ3kY0l2b/X9kvwoyVXt
+8VdDfQ5Ock2SzUlOS5JWf2SSi5Jsas97tHpau81tPweN6xglSZKkcRnnFfWzgFXb1C4CDqyqJwH/
+BLxuaN03qmpFe7xyqH46sBZY3h5T2zwJuLiqlgMXt9cARw61Xdv6S5IkSfPK2IJ6VX0WuG2b2ier
+6u728lJg6XTbSLI3sFtVXVJVBZwDHN1WrwbObstnb1M/pwYuBXZv25EkSZLmjUnOUf9d4ONDr/dP
+8qUkn0nyjFbbB9gy1GZLqwE8uqpuAmjPew31uWE7fSRJkqR5YfEkdprkT4G7gQ+00k3Asqq6NcnB
+wN8neSKQEd1rR5ufaZ8kaxlMj2HZsmUzGbokSZI0J+b8inqSNcB/BH6nTWehqu6qqlvb8hXAN4Bf
+ZHA1fHh6zFLgxrZ889SUlvZ8S6tvAfbdTp/7qKozqmplVa1csmTJbByeJEmSNCvmNKgnWQW8Fnhe
+Vd05VF+SZFFbfjyDD4Je36a03JHk0Ha3l+OAC1q39cCatrxmm/px7e4vhwK3T02RkSRJkuaLsU19
+SfJB4FnAnkm2ACczuMvLQ4GL2l0WL213ePl14I1J7gbuAV5ZVVMfRH0VgzvI7MpgTvvUvPa3AOcn
+OR74FvDCVt8AHAVsBu4EXj6uY5QkSZLGZWxBvaqOHVE+czttPwJ8ZDvrNgIHjqjfChw2ol7ACQ9o
+sJIkSVJn/GZSSZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMG
+dUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQzMK6kkunklNkiRJ0uxYPN3KJA8DHg7s
+mWQPIG3VbsBjxzw2SZIkaac1bVAHXgG8hkEov4J7g/r3gfeMcVySJEnSTm3aoF5V7wbeneT3q+ov
+52hMkiRJ0k5vR1fUAaiqv0zyNGC/4T5Vdc6YxiVJkiTt1GYU1JP8DfAE4CrgnlYuwKAuSZIkjcGM
+gjqwEjigqmqcg5EkSZI0MNP7qF8LPGacA5EkSZJ0r5leUd8T+EqSLwJ3TRWr6nljGZUkSZK0k5tp
+UD9lnIOQJEmSdF8zvevLZ8Y9EEmSJEn3muldX+5gcJcXgF2AnwF+WFW7jWtgkiRJ0s5splfUf274
+dZKjgUPGMiJJkiRJM77ry31U1d8Dz57lsUiSJElqZjr15beHXj6EwX3Vvae6JEmSNCYzvevLbw0t
+3w18E1g966ORJEmSBMx8jvrLxz0QSZIkSfea0Rz1JEuTfCzJLUluTvKRJEtn0G9d63PtUO2RSS5K
+sqk979HqSXJaks1Jrk5y0FCfNa39piRrhuoHJ7mm9TktSabbhyRJkjRfzPTDpO8H1gOPBfYB/qHV
+duQsYNU2tZOAi6tqOXBxew1wJLC8PdYCp8MgdAMnA09lcKeZk4eC9+mt7VS/VTvYhyRJkjQvzDSo
+L6mq91fV3e1xFrBkR52q6rPAbduUVwNnt+WzgaOH6ufUwKXA7kn2Bo4ALqqq26rqu8BFwKq2breq
+uqSqCjhnm22N2ockSZI0L8w0qH8nyUuSLGqPlwC3Psh9PrqqbgJoz3u1+j7ADUPttrTadPUtI+rT
+7UOSJEmaF2Ya1H8XeBHwr8BNwAuA2f6AaUbU6kHUZ77DZG2SjUk2bt269YF0lSRJksZqpkH9TcCa
+qlpSVXsxCO6nPMh93tymrdCeb2n1LcC+Q+2WAjfuoL50RH26fdxHVZ1RVSurauWSJTucySNJkiTN
+mZkG9Se1+eEAVNVtwFMe5D7XA1N3blkDXDBUP67d/eVQ4PY2beVC4PAke7QPkR4OXNjW3ZHk0Ha3
+l+O22daofUiSJEnzwky/8OghSfaYCuvtTiw77Jvkg8CzgD2TbGFw95a3AOcnOR74FvDC1nwDcBSw
+GbiTNrWmqm5L8ibg8tbuje0XBYBXMbizzK7Ax9uDafYhSZIkzQszDervAL6Q5MMM5oG/CDh1R52q
+6tjtrDpsRNsCTtjOdtYB60bUNwIHjqjfOmofkiRJ0nwx028mPSfJRuDZDD7E+dtV9ZWxjkySJEna
+ic30ijotmBvOJUmSpDkw0w+TSpIkSZpDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIk
+qUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSp
+QwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlD
+BnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDcx7Uk/xSkquGHt9P8pok
+pyT59lD9qKE+r0uyOcnXkxwxVF/VapuTnDRU3z/JZUk2JTkvyS5zfZySJEnST2POg3pVfb2qVlTV
+CuBg4E7gY231O6fWVdUGgCQHAMcATwRWAe9NsijJIuA9wJHAAcCxrS3AW9u2lgPfBY6fq+OTJEmS
+ZsOkp74cBnyjqv5lmjargXOr6q6q+mdgM3BIe2yuquur6sfAucDqJAGeDXy49T8bOHpsRyBJkiSN
+waSD+jHAB4den5jk6iTrkuzRavsANwy12dJq26s/CvheVd29TV2SJEmaNyYW1Nu88ecBH2ql04En
+ACuAm4B3TDUd0b0eRH3UGNYm2Zhk49atWx/A6CVJkqTxmuQV9SOBK6vqZoCqurmq7qmqnwDvYzC1
+BQZXxPcd6rcUuHGa+neA3ZMs3qZ+P1V1RlWtrKqVS5YsmaXDkiRJkn56kwzqxzI07SXJ3kPrng9c
+25bXA8ckeWiS/YHlwBeBy4Hl7Q4vuzCYRrO+qgr4NPCC1n8NcMFYj0SSJEmaZYt33GT2JXk48Fzg
+FUPl/5VkBYNpKt+cWldV1yU5H/gKcDdwQlXd07ZzInAhsAhYV1XXtW29Fjg3yZuBLwFnjv2gJEmS
+pFk0kaBeVXcy+NDncO2l07Q/FTh1RH0DsGFE/XrunTojSZIkzTuTvuuLJEmSpBEM6pIkSVKHDOqS
+JElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIk
+SVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJ
+UocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElS
+hwzqkiRJUocM6pIkSVKHJhbUk3wzyTVJrkqysdUemeSiJJva8x6tniSnJdmc5OokBw1tZ01rvynJ
+mqH6wW37m1vfzP1RSpIkSQ/OpK+o/0ZVraiqle31ScDFVbUcuLi9BjgSWN4ea4HTYRDsgZOBpwKH
+ACdPhfvWZu1Qv1XjPxxJkiRpdkw6qG9rNXB2Wz4bOHqofk4NXArsnmRv4Ajgoqq6raq+C1wErGrr
+dquqS6qqgHOGtiVJkiR1b5JBvYBPJrkiydpWe3RV3QTQnvdq9X2AG4b6bmm16epbRtQlSZKkeWHx
+BPf99Kq6MclewEVJvjZN21Hzy+tB1O+70cEvCGsBli1btuMRS5IkSXNkYlfUq+rG9nwL8DEGc8xv
+btNWaM+3tOZbgH2Hui8FbtxBfemI+rZjOKOqVlbVyiVLlszGYUmSJEmzYiJBPckjkvzc1DJwOHAt
+sB6YunPLGuCCtrweOK7d/eVQ4PY2NeZC4PAke7QPkR4OXNjW3ZHk0Ha3l+OGtiVJkiR1b1JTXx4N
+fKzdMXEx8HdV9YkklwPnJzke+BbwwtZ+A3AUsBm4E3g5QFXdluRNwOWt3Rur6ra2/CrgLGBX4OPt
+IUmSJM0LEwnqVXU98OQR9VuBw0bUCzhhO9taB6wbUd8IHPhTD1YLzrfe+KuTHsKCt+wN10x6CJIk
+zXu93Z5RkiRJEgZ1SZIkqUsGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIk
+qUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSp
+QwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUMGdUmSJKlD
+BnVJkiSpQwZ1SZIkqUMGdUmSJKlDBnVJkiSpQwZ1SZIkqUNzHtST7Jvk00m+muS6JK9u9VOSfDvJ
+Ve1x1FCf1yXZnOTrSY4Yqq9qtc1JThqq75/ksiSbkpyXZJe5PUpJkiTppzOJK+p3A39YVb8CHAqc
+kOSAtu6dVbWiPTYAtHXHAE8EVgHvTbIoySLgPcCRwAHAsUPbeWvb1nLgu8Dxc3VwkiRJ0myY86Be
+VTdV1ZVt+Q7gq8A+03RZDZxbVXdV1T8Dm4FD2mNzVV1fVT8GzgVWJwnwbODDrf/ZwNHjORpJkiRp
+PCY6Rz3JfsBTgMta6cQkVydZl2SPVtsHuGGo25ZW2179UcD3qurubeqSJEnSvDGxoJ7kZ4GPAK+p
+qu8DpwNPAFYANwHvmGo6ons9iPqoMaxNsjHJxq1btz7AI5AkSZLGZyJBPcnPMAjpH6iqjwJU1c1V
+dU9V/QR4H4OpLTC4Ir7vUPelwI3T1L8D7J5k8Tb1+6mqM6pqZVWtXLJkyewcnCRJkjQLJnHXlwBn
+Al+tqr8Yqu891Oz5wLVteT1wTJKHJtkfWA58EbgcWN7u8LILgw+crq+qAj4NvKD1XwNcMM5jkiRJ
+kmbb4h03mXVPB14KXJPkqlb7EwZ3bVnBYJrKN4FXAFTVdUnOB77C4I4xJ1TVPQBJTgQuBBYB66rq
+ura91wLnJnkz8CUGvxhIkiRJ88acB/Wq+hyj55FvmKbPqcCpI+obRvWrquu5d+qMJEmSNO/4zaSS
+JElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIk
+SVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShwzqkiRJ
+UocM6pIkSVKHDOqSJElShwzqkiRJUocM6pIkSVKHDOqSJElShxZPegCSpJ3DZ379mZMewoL3zM9+
+ZtJDkDSLvKIuSZIkdcigLkmSJHXIoC5JkiR1yKAuSZIkdcigLkmSJHXIoC5JkiR1yKAuSZIkdWjB
+BvUkq5J8PcnmJCdNejySJEnSA7Egg3qSRcB7gCOBA4Bjkxww2VFJkiRJM7cggzpwCLC5qq6vqh8D
+5wKrJzwmSZIkacYWalDfB7hh6PWWVpMkSZLmhcWTHsCYZESt7tcoWQusbS9/kOTrYx3VZO0JfGfS
+g3gg8vY1kx5CL+bduePkUT+CO615d/7yB56/IfPr/MVzN2R+nTtta6Gfv8fNpNFCDepbgH2HXi8F
+bty2UVWdAZwxV4OapCQbq2rlpMehB85zN795/uY3z9/85bmb3zx/Awt16svlwPIk+yfZBTgGWD/h
+MUmSJEkztiCvqFfV3UlOBC4EFgHrquq6CQ9LkiRJmrEFGdQBqmoDsGHS4+jITjHFZ4Hy3M1vnr/5
+zfM3f3nu5jfPH5Cq+33GUpIkSdKELdQ56pIkSdK8ZlCf55JUkr8Zer04ydYk/2eS49ID43mc3zx/
+fUjyqCRXtce/Jvn20OtdZmH7v5fkXbMxVs2eJPe0c3xdki8n+W9JzDed831zZhbsHPWdyA+BA5Ps
+WlU/Ap4LfHtUwySLq+ruOR2dZsrzOL/N+PxpfKrqVmAFQJJTgB9U1dsnOqgh/uyOzY+qauq87wX8
+HfDzwMnDjfz3747vmzPgb5wLw8eB32zLxwIfnFqR5JQkZyT5JHBOkicm+WK7+nB1kuWTGLBGmvF5
+nMTgtEPTnb9nDl3Z/VKSn5vICHdiSdYMvfe9d+qKa/u52tiuxr5hqP1Tk1zSrtBeluThbdXSJBcm
+2ZTkz4faH9naX5nkvCSPaPUtSV6f5PPA8+fymHdGVXULgy8yPDEDL0vyoST/AHxywsPT/U33vnna
+1M9kkiOSfHZn/EvJTnfAC9S5wDFJHgY8Cbhsm/UHA6ur6j8BrwTe3a4+rGTw5VDqwwM5j+rPdOfv
+j4AT2s/dM4AfTWB8O60kBzIIyU9r52Axg+/XADipfanKk4HnJjmgncNzGZyzJwOHA3e19k8GXsDg
+HL8kyWPbVdyTgMOq6iDgauDVQ0P4YVU9vao+NN4jFUBVXc8g3+zVSv8BWFNVz57cqLQd071vngS8
+OMlvAKcBL6+qn0xgjBPl1JcFoKquTrIfg99GR92Scn37sxLAJcCfJlkKfLSqNs3NKLUjD/A8qjM7
+OH+fB/4iyQcY/Nz5C/Lceg7wa8DGJAC7Aje0dccmOZ7B/4ePBQ4AHgp8q6quBKiq2wFa309V1R3t
+9deAZcBjWr8vtDa7AJ8b2v95Yzw2jZah5Yuq6raJjUTbNd37ZlXdmeQ/A58F/mtVfWPuRzh5BvWF
+Yz3wduBZwKO2WffDqYWq+rsklzH4U9OFSX6vqv5xzkapHZnReVS3Rp6/qnpLkv8LHAVcmuQ5VfW1
+yQxxpxQGX3z3+vsUB1P/Xg0cUlXfS/K3wMNa++3du/iuoeV7GPw/GuATVfXS7fTxZ3cOJXk8g3Nz
+Syv579+36f7f+1XgVga/RO+UnPqycKwD3lhV10zXqL2BXV9VpzH44XjSXAxOMzaj86hujTx/SZ5Q
+VddU1VuBjcAvT2R0O69PAS9Ksif8+91hlgG7AXcA30+yN3BEa38d8LgkB7X2uyVZNM32vwA8s72/
+kuQRfv5nMpIsAf4K+N/lF8XMF9t733wc8IfAU4Ajkzx1EoObNIP6AlFVW6rq3TNo+mLg2iRXMQgL
+5wAk2ZBkp/2NtRczPY9tXqzfvNuZac7fa5Jcm+TLDOanfxyg/RxqzFoA+DPgU0muZvChwkcDVwJf
+Aa4F3sdgihJVdReDP8Wf3s7ZJxlMh9ne9m8GjgfOa+2/APzi2A5I29p16vaMDH4p+ySD8z2SP3d9
+GfW+mcEcsjOBP6qqGxn8fP11kocleV6SN05irJPgN5NKkiRJHfKKuiRJktQhg7okSZLUIYO6JEmS
+1CGDuiRJktQhg7okSZLUIYO6JM0j7R7gV7XHvyb59tDrXWZh+7+X5F2zMda2vTcPjfGaJL/5APsn
+yflJrk7yB0lObV8pLkkLnt9MKknzSFXdCqwASHIK8IOqevtEBzUkyeKqunub8tuq6l1JDgQ+nWSv
+4S+j2U6fKfsAB1fVE8Y1ZknqlVfUJWmBSLImyRfb1ev3JnlIq5+RZGOS65K8Yaj9U5NckuTLSS5L
+8vC2ammSC5NsSvLnQ+2PbO3FCyVCAAACoElEQVSvTHJekke0+pYkr0/yeeD52xtfVV0LBNgjyd8m
+eUeSTwP/M8nPJjmrjf9LSX6rdfsk8Nh2TE9r/Y5OsnuSf0ryC20MH0ry8ln855SkiTOoS9IC0K5W
+Px94WlWtYPAX02Pa6pOqaiXwZOC5SQ5I8jDgXOCEqnoycDhwV2v/ZOAFwJOAl7Rvwt0LOAk4rKoO
+Aq4GXj00hB9W1dOr6kPTjPFpwL9V1W2t9IS2vf8OvAH4RFUdAjwbeEcb4/OAr1fViqr6wtS2qup7
+wB8AZyX5HeDhVfX+B/4vJ0n9cuqLJC0MzwF+Ddg4+PZtdgVuaOuOTXI8g/f8xwIHAA8FvlVVVwJU
+1e0Are+nquqO9vprwDLgMa3fF1qbXYDPDe3/vGnG9sdJXgbcAbx4qP6hqvpJWz4cODLJSe31w9p+
+f8J2VNUnkrwIeDeDXyokaUExqEvSwhBgXVW9/j7FZDmDK9+HVNX3kvwtgxAcoO6/GeDeK+sA9zD4
+vyIMrni/dDt9fjjN2N5WVaM+oDrcJ8DRVfWNbcb/C9vbaJJFwC8DPwL2AG6cZgySNO849UWSFoZP
+AS9Ksif8+91hlgG7MbiS/f0kewNHtPbXAY9LclBrv1sLvtvzBeCZSR7f2j+i/RIwWy5kMJWFtv2n
+zKDPHwFXAccB70/ixSdJC4pvapK0AFTVNUn+DPhU+xDp/wNeCWwEvgJcC1wPfL61vyvJscDpbS74
+jxjMDd/e9m9u02fOG7oN5J8Am2bpEP4MeFeSaxhcRNoMrN5e4yS/Aqxh8JeCHyS5FHgd8KZZGo8k
+TVyG7pAlSZIkqRNOfZEkSZI6ZFCXJEmSOmRQlyRJkjpkUJckSZI6ZFCXJEmSOmRQlyRJkjpkUJck
+SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">projects</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Project ID</th>
+      <th>School ID</th>
+      <th>Teacher ID</th>
+      <th>Teacher Project Posted Sequence</th>
+      <th>Project Type</th>
+      <th>Project Title</th>
+      <th>Project Essay</th>
+      <th>Project Subject Category Tree</th>
+      <th>Project Subject Subcategory Tree</th>
+      <th>Project Grade Level Category</th>
+      <th>Project Resource Category</th>
+      <th>Project Cost</th>
+      <th>Project Posted Date</th>
+      <th>Project Current Status</th>
+      <th>Project Fully Funded Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>77b7d3f2ac4e32d538914e4a8cb8a525</td>
+      <td>c2d5cb0a29a62e72cdccee939f434181</td>
+      <td>59f7d2c62f7e76a99d31db6f62b7b67c</td>
+      <td>2</td>
+      <td>Teacher-Led</td>
+      <td>Anti-Bullying Begins with Me</td>
+      <td>do you remember your favorite classroom from e...</td>
+      <td>Applied Learning, Literacy &amp; Language</td>
+      <td>Character Education, Literacy</td>
+      <td>Grades PreK-2</td>
+      <td>Books</td>
+      <td>$490.38</td>
+      <td>2013-01-01</td>
+      <td>Fully Funded</td>
+      <td>2013-03-12</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fd928b7f6386366a9cad2bea40df4b25</td>
+      <td>8acbb544c9215b25c71a0c655200baea</td>
+      <td>8fbd92394e20d647ddcdc6085ce1604b</td>
+      <td>1</td>
+      <td>Teacher-Led</td>
+      <td>Ukuleles For Middle Schoolers</td>
+      <td>what sound is happier than a ukulele?  we have...</td>
+      <td>Music &amp; The Arts</td>
+      <td>Music</td>
+      <td>Grades 6-8</td>
+      <td>Supplies</td>
+      <td>$420.61</td>
+      <td>2013-01-01</td>
+      <td>Expired</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7c915e8e1d27f10a94abd689e99c336f</td>
+      <td>0ae85ea7c7acc41cffa9f81dc61d46df</td>
+      <td>9140ac16d2e6cee45bd50b0b2ce8cd04</td>
+      <td>2</td>
+      <td>Teacher-Led</td>
+      <td>Big Books, Flip Books, And Everything In Between</td>
+      <td>my 1st graders may be small, but they have big...</td>
+      <td>Literacy &amp; Language, Special Needs</td>
+      <td>Literacy, Special Needs</td>
+      <td>Grades PreK-2</td>
+      <td>Books</td>
+      <td>$510.46</td>
+      <td>2013-01-01</td>
+      <td>Fully Funded</td>
+      <td>2013-01-07</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resources</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Project ID</th>
+      <th>Resource Item Name</th>
+      <th>Resource Quantity</th>
+      <th>Resource Unit Price</th>
+      <th>Resource Vendor Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>chair move and store cart</td>
+      <td>1.0</td>
+      <td>350.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00000ce845c00cbf0686c992fc369df4</td>
+      <td>sony mdr zx100 blk   headphones</td>
+      <td>40.0</td>
+      <td>12.86</td>
+      <td>CDW-G</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00002d44003ed46b066607c5455a999a</td>
+      <td>gaiam kids stay-n-play balance ball, grey</td>
+      <td>4.0</td>
+      <td>19.00</td>
+      <td>Amazon Business</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Project ID</th>
+      <th>Donation ID</th>
+      <th>Donor ID</th>
+      <th>Donation Included Optional Donation</th>
+      <th>Donation Amount</th>
+      <th>Donor Cart Sequence</th>
+      <th>Donation Received Date</th>
+      <th>Donor City</th>
+      <th>Donor State</th>
+      <th>Donor Is Teacher</th>
+      <th>Donor Zip</th>
+      <th>School ID</th>
+      <th>Teacher ID</th>
+      <th>Teacher Project Posted Sequence</th>
+      <th>Project Type</th>
+      <th>Project Title</th>
+      <th>Project Essay</th>
+      <th>Project Subject Category Tree</th>
+      <th>Project Subject Subcategory Tree</th>
+      <th>Project Grade Level Category</th>
+      <th>Project Resource Category</th>
+      <th>Project Cost</th>
+      <th>Project Posted Date</th>
+      <th>Project Current Status</th>
+      <th>Project Fully Funded Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>688729120858666221208529ee3fc18e</td>
+      <td>1f4b5b6e68445c6c4a0509b3aca93f38</td>
+      <td>No</td>
+      <td>178.37</td>
+      <td>11</td>
+      <td>2016-08-23 13:15:57</td>
+      <td>West Jordan</td>
+      <td>Utah</td>
+      <td>No</td>
+      <td>840</td>
+      <td>5aa86a53f658c198fd4e42c541411c76</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>6</td>
+      <td>Teacher-Led</td>
+      <td>OHMS Musician Chair Cart</td>
+      <td>the music students in our classes perform freq...</td>
+      <td>Music &amp; The Arts</td>
+      <td>Music</td>
+      <td>Grades 6-8</td>
+      <td>Other</td>
+      <td>$529.68</td>
+      <td>2016-05-13</td>
+      <td>Fully Funded</td>
+      <td>2016-08-23</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>dcf1071da3aa3561f91ac689d1f73dee</td>
+      <td>4aaab6d244bf3599682239ed5591af8a</td>
+      <td>Yes</td>
+      <td>25.00</td>
+      <td>2</td>
+      <td>2016-06-06 20:05:23</td>
+      <td>Riverton</td>
+      <td>Utah</td>
+      <td>Yes</td>
+      <td>840</td>
+      <td>5aa86a53f658c198fd4e42c541411c76</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>6</td>
+      <td>Teacher-Led</td>
+      <td>OHMS Musician Chair Cart</td>
+      <td>the music students in our classes perform freq...</td>
+      <td>Music &amp; The Arts</td>
+      <td>Music</td>
+      <td>Grades 6-8</td>
+      <td>Other</td>
+      <td>$529.68</td>
+      <td>2016-05-13</td>
+      <td>Fully Funded</td>
+      <td>2016-08-23</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>18a234b9d1e538c431761d521ea7799d</td>
+      <td>0b0765dc9c759adc48a07688ba25e94e</td>
+      <td>Yes</td>
+      <td>20.00</td>
+      <td>3</td>
+      <td>2016-06-06 14:08:46</td>
+      <td>Riverton</td>
+      <td>Utah</td>
+      <td>No</td>
+      <td>840</td>
+      <td>5aa86a53f658c198fd4e42c541411c76</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>6</td>
+      <td>Teacher-Led</td>
+      <td>OHMS Musician Chair Cart</td>
+      <td>the music students in our classes perform freq...</td>
+      <td>Music &amp; The Arts</td>
+      <td>Music</td>
+      <td>Grades 6-8</td>
+      <td>Other</td>
+      <td>$529.68</td>
+      <td>2016-05-13</td>
+      <td>Fully Funded</td>
+      <td>2016-08-23</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>38d2744bf9138b0b57ed581c76c0e2da</td>
+      <td>377944ad61f72d800b25ec1862aec363</td>
+      <td>Yes</td>
+      <td>25.00</td>
+      <td>1</td>
+      <td>2016-05-15 10:23:04</td>
+      <td>Phoenix</td>
+      <td>Arizona</td>
+      <td>No</td>
+      <td>850</td>
+      <td>5aa86a53f658c198fd4e42c541411c76</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>6</td>
+      <td>Teacher-Led</td>
+      <td>OHMS Musician Chair Cart</td>
+      <td>the music students in our classes perform freq...</td>
+      <td>Music &amp; The Arts</td>
+      <td>Music</td>
+      <td>Grades 6-8</td>
+      <td>Other</td>
+      <td>$529.68</td>
+      <td>2016-05-13</td>
+      <td>Fully Funded</td>
+      <td>2016-08-23</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>000009891526c0ade7180f8423792063</td>
+      <td>5a032791e31167a70206bfb86fb60035</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>Yes</td>
+      <td>25.00</td>
+      <td>2</td>
+      <td>2016-05-17 01:23:38</td>
+      <td>Salt Lake City</td>
+      <td>Utah</td>
+      <td>Yes</td>
+      <td>841</td>
+      <td>5aa86a53f658c198fd4e42c541411c76</td>
+      <td>6d5b22d39e68c656071a842732c63a0c</td>
+      <td>6</td>
+      <td>Teacher-Led</td>
+      <td>OHMS Musician Chair Cart</td>
+      <td>the music students in our classes perform freq...</td>
+      <td>Music &amp; The Arts</td>
+      <td>Music</td>
+      <td>Grades 6-8</td>
+      <td>Other</td>
+      <td>$529.68</td>
+      <td>2016-05-13</td>
+      <td>Fully Funded</td>
+      <td>2016-08-23</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Donors who have donated to more than 1 campaign</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)[</span><span class="s1">&#39;Donor Cart Sequence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">donations_per_donor1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">donations_per_donor</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No more than 1 donation is given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">donations_per_donor1</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="n">donations_per_donor_more_than_1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">donations_per_donor</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;More than 1 donation is given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">donations_per_donor_more_than_1</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>No more than 1 donation is given by: 68.93% donors
+More than 1 donation is given by: 31.07% donors
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)[</span><span class="s1">&#39;Donor Cart Sequence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">donations_per_donor1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">donations_per_donor</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">donations_per_donor_under_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_under_10</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_under_15</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_under_20</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_under_25</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_under_30</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_over_29</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">donations_per_donor</span> <span class="o">&gt;</span> <span class="mi">29</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">between1_5</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">donations_per_donor_under_5</span><span class="o">-</span><span class="n">donations_per_donor1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">between5_10</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">donations_per_donor_under_10</span><span class="o">-</span><span class="n">donations_per_donor_under_5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">between10_15</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">donations_per_donor_under_15</span><span class="o">-</span><span class="n">donations_per_donor_under_10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">between15_20</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">donations_per_donor_under_20</span><span class="o">-</span><span class="n">donations_per_donor_under_15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">between20_25</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">donations_per_donor_under_25</span><span class="o">-</span><span class="n">donations_per_donor_under_20</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">between25_30</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">donations_per_donor_under_30</span><span class="o">-</span><span class="n">donations_per_donor_under_25</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Only one time donation is given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">donations_per_donor1</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2 to 4 donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">between1_5</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5 to 9 donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">between5_10</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10 to 14 donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">between10_15</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;15 to 19 donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">between15_20</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;20 to 24 donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">between20_25</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;25 to 29 donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">between25_30</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;29 or more donations are given by: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">donations_per_donor_over_29</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Only one time donation is given by: 68.93% donors
+2 to 4 donations are given by: 23.49% donors
+5 to 9 donations are given by: 4.89% donors
+10 to 14 donations are given by: 1.26% donors
+15 to 19 donations are given by: 0.51% donors
+20 to 24 donations are given by: 0.27% donors
+25 to 29 donations are given by: 0.16% donors
+29 or more donations are given by: 0.48% donors
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span><span class="o">=</span><span class="n">donations_per_donor1</span><span class="o">+</span><span class="n">between1_5</span><span class="o">+</span><span class="n">between5_10</span><span class="o">+</span><span class="n">between10_15</span><span class="o">+</span><span class="n">between15_20</span><span class="o">+</span><span class="n">between20_25</span><span class="o">+</span><span class="n">between25_30</span><span class="o">+</span><span class="n">donations_per_donor_over_29</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Percentages added together: &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Percentages added together: 99.99%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor_under_10</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
+<span class="n">donations_per_donor_over_9</span><span class="o">=</span><span class="nb">round</span><span class="p">((</span><span class="n">donations_per_donor</span><span class="o">-</span><span class="n">donations_per_donor_under_10</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10 or more donations are given by &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">donations_per_donor_over_9</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">onors&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>IOPub data rate exceeded.
+The notebook server will temporarily stop sending output
+to the client in order to avoid crashing it.
+To change this limit, set the config variable
+`--NotebookApp.iopub_data_rate_limit`.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before modeling, we need to measure the relation strength between a donor and a project. Although most donors only donate once in the dataset, there are donors who donated to the same project multiple times, and users who donated to multiple projects. The donation amount also varies. To better measure this strength, we combine the times and amounts of donations, and create a new dataset containing unique donation relations between a donor, a project, and the relation strength. he number of projects and unique donor-project donation events:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Deal with missing values</span>
+<span class="n">donations</span><span class="p">[</span><span class="s2">&quot;Donation Amount&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">donations</span><span class="p">[</span><span class="s2">&quot;Donation Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Define event strength as the donated amount to a certain project</span>
+<span class="n">donations_df</span><span class="p">[</span><span class="s1">&#39;eventStrength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">donations_df</span><span class="p">[</span><span class="s1">&#39;Donation Amount&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">smooth_donor_preference</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    
+<span class="n">donations_full_df</span> <span class="o">=</span> <span class="n">donations_df</span> \
+                    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Project ID&#39;</span><span class="p">])[</span><span class="s1">&#39;eventStrength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> \
+                    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">smooth_donor_preference</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        
+<span class="c1"># Update projects dataset</span>
+<span class="n">project_cols</span> <span class="o">=</span> <span class="n">projects</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">projects</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">project_cols</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# of projects: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">projects</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# of unique user/project donations: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">donations_full_df</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre># of projects: 1889
+# of unique user/project donations: 8648
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Apparently, our test mode with 10000 donation events contains 1889 projects and 8648 unique user-project donations. We can also take a look at the first five rows of our donor-project dataset:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Set-up-Test/Train-sets">Set up Test/Train sets<a class="anchor-link" href="#Set-up-Test/Train-sets">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_train_df</span><span class="p">,</span> <span class="n">donations_test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">donations_full_df</span><span class="p">,</span>
+                                   <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span>
+                                   <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# donations on Train set: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">donations_train_df</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# donations on Test set: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">donations_test_df</span><span class="p">))</span>
+
+<span class="c1">#Indexing by Donor Id to speed up the searches during evaluation</span>
+<span class="n">donations_full_indexed_df</span> <span class="o">=</span> <span class="n">donations_full_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)</span>
+<span class="n">donations_train_indexed_df</span> <span class="o">=</span> <span class="n">donations_train_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)</span>
+<span class="n">donations_test_indexed_df</span> <span class="o">=</span> <span class="n">donations_test_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre># donations on Train set: 6918
+# donations on Test set: 1730
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Content-Based-Filtering-model">1. Content-Based Filtering model<a class="anchor-link" href="#1.-Content-Based-Filtering-model">&#182;</a></h2><p>We will use Content-Based Filtering method to find projects that are similar to the project(s) that a donor has already donated to. We can calculate the similarity between projects based on data and/or text features extracted from the text data.</p>
+<p>I used <a href="https://www.kaggle.com/gunnvant/building-content-recommender-tutorial/notebook">a tutortial by</a> user <a href="https://www.kaggle.com/gunnvant">gunnvant</a> to construct word vectors with TF-IDF.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Preprocessing of text data</span>
+<span class="n">textfeats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Project Title&quot;</span><span class="p">,</span><span class="s2">&quot;Project Essay&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">cols</span> <span class="ow">in</span> <span class="n">textfeats</span><span class="p">:</span>
+    <span class="n">projects</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">projects</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> 
+    <span class="n">projects</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">projects</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1"># FILL NA</span>
+    <span class="n">projects</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">projects</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># Lowercase all text, so that capitalized words dont get treated differently</span>
+ 
+<span class="n">text</span> <span class="o">=</span> <span class="n">projects</span><span class="p">[</span><span class="s2">&quot;Project Title&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">projects</span><span class="p">[</span><span class="s2">&quot;Project Essay&quot;</span><span class="p">]</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">strip_accents</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span>
+                             <span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">,</span>
+                             <span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># Convert all uppercase to lowercase</span>
+                             <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="c1"># Remove commonly found english words (&#39;it&#39;, &#39;a&#39;, &#39;the&#39;) which do not typically contain much signal</span>
+                             <span class="n">max_df</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span> <span class="c1"># Only consider words that appear in fewer than max_df percent of all documents</span>
+                             <span class="c1"># max_features=5000 # Maximum features to be extracted                    </span>
+                            <span class="p">)</span>                        
+<span class="n">project_ids</span> <span class="o">=</span> <span class="n">projects</span><span class="p">[</span><span class="s1">&#39;Project ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">tfidf_feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="n">tfidf_matrix</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;1889x12490 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+  with 182757 stored elements in Compressed Sparse Row format&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Donor-profile">Donor profile<a class="anchor-link" href="#Donor-profile">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_project_profile</span><span class="p">(</span><span class="n">project_id</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">project_ids</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">project_id</span><span class="p">)</span>
+    <span class="n">project_profile</span> <span class="o">=</span> <span class="n">tfidf_matrix</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">project_profile</span>
+
+<span class="k">def</span> <span class="nf">get_project_profiles</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
+    <span class="n">project_profiles_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_project_profile</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">([</span><span class="n">ids</span><span class="p">])]</span>
+    <span class="n">project_profiles</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">project_profiles_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">project_profiles</span>
+
+<span class="k">def</span> <span class="nf">build_donors_profile</span><span class="p">(</span><span class="n">donor_id</span><span class="p">,</span> <span class="n">donations_indexed_df</span><span class="p">):</span>
+    <span class="n">donations_donor_df</span> <span class="o">=</span> <span class="n">donations_indexed_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">donor_id</span><span class="p">]</span>
+    <span class="n">donor_project_profiles</span> <span class="o">=</span> <span class="n">get_project_profiles</span><span class="p">(</span><span class="n">donations_donor_df</span><span class="p">[</span><span class="s1">&#39;Project ID&#39;</span><span class="p">])</span>
+    <span class="n">donor_project_strengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">donations_donor_df</span><span class="p">[</span><span class="s1">&#39;eventStrength&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1">#Weighted average of project profiles by the donations strength</span>
+    <span class="n">donor_project_strengths_weighted_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">donor_project_profiles</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">donor_project_strengths</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">donor_project_strengths</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">donor_profile_norm</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">donor_project_strengths_weighted_avg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">donor_profile_norm</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+
+<span class="k">def</span> <span class="nf">build_donors_profiles</span><span class="p">():</span> 
+    <span class="n">donations_indexed_df</span> <span class="o">=</span> <span class="n">donations_full_df</span><span class="p">[</span><span class="n">donations_full_df</span><span class="p">[</span><span class="s1">&#39;Project ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">projects</span><span class="p">[</span><span class="s1">&#39;Project ID&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)</span>
+    <span class="n">donor_profiles</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">donor_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">donations_indexed_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">build_donors_profile</span><span class="p">(</span><span class="n">donor_id</span><span class="p">,</span> <span class="n">donations_indexed_df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">donor_profiles</span>
+
+<span class="n">donor_profiles</span> <span class="o">=</span> <span class="n">build_donors_profiles</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# of donors with profiles: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">donor_profiles</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>100%|██████████| 8015/8015 [00:08&lt;00:00, 948.57it/s] </pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre># of donors with profiles: 8015
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre></pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_full_indexed_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Project ID</th>
+      <th>eventStrength</th>
+    </tr>
+    <tr>
+      <th>Donor ID</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0003aba06ccf49f8c44fc2dd3b582411</th>
+      <td>0081553d51ed5d2529e2e38b0827133a</td>
+      <td>5.672425</td>
+    </tr>
+    <tr>
+      <th>000f7306e8ddb36296f0d97a34d67d76</th>
+      <td>007e2a1a47ce50ded4538692d0bf601b</td>
+      <td>4.700440</td>
+    </tr>
+    <tr>
+      <th>00125f251b05d9e447a5448bef981028</th>
+      <td>0055c89fe4b1085db791edeb67ace2e0</td>
+      <td>4.700440</td>
+    </tr>
+    <tr>
+      <th>0013dfb2a873420fe6e7d750ef24ce98</th>
+      <td>004baba788df541cc469c0f4f21493d6</td>
+      <td>3.087463</td>
+    </tr>
+    <tr>
+      <th>0016b23800f7ea46424b3254f016007a</th>
+      <td>004c7c5e1a8cbce0ee63d14574096aeb</td>
+      <td>5.672425</td>
+    </tr>
+    <tr>
+      <th>00199e3565635f8a5ebefd3b5985a7f3</th>
+      <td>006a17f2eff0c3dae79630c295e2a666</td>
+      <td>7.838069</td>
+    </tr>
+    <tr>
+      <th>00309a47b765e12714d817ee3215de1e</th>
+      <td>006a366c97f485d4f349fad018d95f42</td>
+      <td>4.075533</td>
+    </tr>
+    <tr>
+      <th>0036448e416b71ab040182c428958b6f</th>
+      <td>000c43686474a41cbd1b04110149160c</td>
+      <td>4.700440</td>
+    </tr>
+    <tr>
+      <th>00393e12bc4f2eefa1a342a83559c2be</th>
+      <td>006a366c97f485d4f349fad018d95f42</td>
+      <td>5.672425</td>
+    </tr>
+    <tr>
+      <th>0052dd04a7cf2d91db791c94dec448ac</th>
+      <td>002a3115d0e459d096baa65e9f9e3d6e</td>
+      <td>4.700440</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donor1</span> <span class="o">=</span> <span class="s2">&quot;0003aba06ccf49f8c44fc2dd3b582411&quot;</span>
+<span class="n">donor2</span> <span class="o">=</span> <span class="s2">&quot;0016b23800f7ea46424b3254f016007a&quot;</span>
+<span class="n">donor3</span> <span class="o">=</span> <span class="s2">&quot;00125f251b05d9e447a5448bef981028&quot;</span>
+<span class="n">donor4</span> <span class="o">=</span> <span class="s2">&quot;0013dfb2a873420fe6e7d750ef24ce98&quot;</span>
+<span class="n">donor5</span> <span class="o">=</span> <span class="s2">&quot;0016b23800f7ea46424b3254f016007a&quot;</span>
+<span class="n">donor6</span> <span class="o">=</span> <span class="s2">&quot;00199e3565635f8a5ebefd3b5985a7f3&quot;</span>
+<span class="n">donor7</span> <span class="o">=</span> <span class="s2">&quot;00309a47b765e12714d817ee3215de1e&quot;</span>
+<span class="n">donor8</span> <span class="o">=</span> <span class="s2">&quot;0036448e416b71ab040182c428958b6f&quot;</span>
+<span class="n">donor9</span> <span class="o">=</span> <span class="s2">&quot;00393e12bc4f2eefa1a342a83559c2be&quot;</span>
+<span class="n">donor10</span> <span class="o">=</span> <span class="s2">&quot;0052dd04a7cf2d91db791c94dec448ac&quot;</span>
+<span class="n">donor1_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token1&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance1&#39;</span><span class="p">])</span>
+<span class="n">donor2_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token2&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance2&#39;</span><span class="p">])</span>
+<span class="n">donor3_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor3</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token3&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance3&#39;</span><span class="p">])</span>
+<span class="n">donor4_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor4</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token4&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance4&#39;</span><span class="p">])</span>
+<span class="n">donor5_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor5</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token5&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance5&#39;</span><span class="p">])</span>
+<span class="n">donor6_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor6</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token6&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance6&#39;</span><span class="p">])</span>
+<span class="n">donor7_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor7</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token7&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance7&#39;</span><span class="p">])</span>
+<span class="n">donor8_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor8</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token8&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance8&#39;</span><span class="p">])</span>
+<span class="n">donor9_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor9</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token9&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance9&#39;</span><span class="p">])</span>
+<span class="n">donor10_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
+                        <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor10</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token10&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance10&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_profiles</span> <span class="o">=</span> <span class="n">donor1_profile</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor2_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor3_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor4_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor6_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor7_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor8_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor9_profile</span><span class="p">)</span>
+<span class="n">example_profiles</span> <span class="o">=</span> <span class="n">example_profiles</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor10_profile</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_profiles</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>token1</th>
+      <th>relevance1</th>
+      <th>token2</th>
+      <th>relevance2</th>
+      <th>token3</th>
+      <th>relevance3</th>
+      <th>token4</th>
+      <th>relevance4</th>
+      <th>token6</th>
+      <th>relevance6</th>
+      <th>token7</th>
+      <th>relevance7</th>
+      <th>token8</th>
+      <th>relevance8</th>
+      <th>token9</th>
+      <th>relevance9</th>
+      <th>token10</th>
+      <th>relevance10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sets</td>
+      <td>0.313237</td>
+      <td>pollinators</td>
+      <td>0.672316</td>
+      <td>castles</td>
+      <td>0.322847</td>
+      <td>computers</td>
+      <td>0.342839</td>
+      <td>brockton</td>
+      <td>0.318679</td>
+      <td>pinocchio</td>
+      <td>0.515412</td>
+      <td>cubbies</td>
+      <td>0.595062</td>
+      <td>pinocchio</td>
+      <td>0.515412</td>
+      <td>diary</td>
+      <td>0.440622</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>reading</td>
+      <td>0.286720</td>
+      <td>plants</td>
+      <td>0.306352</td>
+      <td>ed</td>
+      <td>0.259267</td>
+      <td>technology</td>
+      <td>0.293033</td>
+      <td>play</td>
+      <td>0.268543</td>
+      <td>conversations</td>
+      <td>0.264213</td>
+      <td>coat</td>
+      <td>0.228447</td>
+      <td>conversations</td>
+      <td>0.264213</td>
+      <td>freedom</td>
+      <td>0.248476</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>zoom</td>
+      <td>0.283351</td>
+      <td>module</td>
+      <td>0.224105</td>
+      <td>frames</td>
+      <td>0.253062</td>
+      <td>computer</td>
+      <td>0.246495</td>
+      <td>kits</td>
+      <td>0.214771</td>
+      <td>engage</td>
+      <td>0.217155</td>
+      <td>belong</td>
+      <td>0.185914</td>
+      <td>engage</td>
+      <td>0.217155</td>
+      <td>writers</td>
+      <td>0.224292</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>levels</td>
+      <td>0.232165</td>
+      <td>pollination</td>
+      <td>0.212532</td>
+      <td>art</td>
+      <td>0.224827</td>
+      <td>complete</td>
+      <td>0.186191</td>
+      <td>challenged</td>
+      <td>0.189753</td>
+      <td>limited</td>
+      <td>0.208959</td>
+      <td>guessing</td>
+      <td>0.160592</td>
+      <td>limited</td>
+      <td>0.208959</td>
+      <td>8th</td>
+      <td>0.209120</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>books</td>
+      <td>0.213696</td>
+      <td>seeds</td>
+      <td>0.181173</td>
+      <td>love</td>
+      <td>0.200784</td>
+      <td>laptop</td>
+      <td>0.182040</td>
+      <td>bonded</td>
+      <td>0.168017</td>
+      <td>experiences</td>
+      <td>0.197402</td>
+      <td>mittens</td>
+      <td>0.160592</td>
+      <td>experiences</td>
+      <td>0.197402</td>
+      <td>literature</td>
+      <td>0.187446</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>running</td>
+      <td>0.186840</td>
+      <td>writing</td>
+      <td>0.164691</td>
+      <td>create</td>
+      <td>0.199808</td>
+      <td>research</td>
+      <td>0.175615</td>
+      <td>dates</td>
+      <td>0.168017</td>
+      <td>experience</td>
+      <td>0.166451</td>
+      <td>personal</td>
+      <td>0.156511</td>
+      <td>experience</td>
+      <td>0.166451</td>
+      <td>weapons</td>
+      <td>0.185847</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>advance</td>
+      <td>0.185617</td>
+      <td>books</td>
+      <td>0.135212</td>
+      <td>picture</td>
+      <td>0.199157</td>
+      <td>presentations</td>
+      <td>0.174949</td>
+      <td>ita</td>
+      <td>0.168017</td>
+      <td>performance</td>
+      <td>0.158564</td>
+      <td>independent</td>
+      <td>0.147382</td>
+      <td>performance</td>
+      <td>0.158564</td>
+      <td>30</td>
+      <td>0.153560</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>groups</td>
+      <td>0.173083</td>
+      <td>reading</td>
+      <td>0.113385</td>
+      <td>writing</td>
+      <td>0.187631</td>
+      <td>lessons</td>
+      <td>0.171142</td>
+      <td>backyards</td>
+      <td>0.148408</td>
+      <td>live</td>
+      <td>0.154904</td>
+      <td>items</td>
+      <td>0.141920</td>
+      <td>live</td>
+      <td>0.154904</td>
+      <td>reflects</td>
+      <td>0.153031</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>order</td>
+      <td>0.163861</td>
+      <td>weaved</td>
+      <td>0.112053</td>
+      <td>express</td>
+      <td>0.181023</td>
+      <td>use</td>
+      <td>0.150782</td>
+      <td>coaches</td>
+      <td>0.148408</td>
+      <td>play</td>
+      <td>0.154460</td>
+      <td>hats</td>
+      <td>0.141850</td>
+      <td>play</td>
+      <td>0.154460</td>
+      <td>classic</td>
+      <td>0.128033</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>book</td>
+      <td>0.158681</td>
+      <td>bees</td>
+      <td>0.102160</td>
+      <td>inspire</td>
+      <td>0.172123</td>
+      <td>working</td>
+      <td>0.134765</td>
+      <td>active</td>
+      <td>0.145138</td>
+      <td>draw</td>
+      <td>0.150138</td>
+      <td>born</td>
+      <td>0.118058</td>
+      <td>draw</td>
+      <td>0.150138</td>
+      <td>obstacles</td>
+      <td>0.118095</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+    </div>
+  </div>
+
+  </div>
+
+
+  
+    <footer class="footer hidden-print">
+      <div class="container">
+        <div class="col-md-4">
+          <p>
+            This website does not host notebooks, it only renders notebooks
+            available on other websites.
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <p>
+            Delivered by <a href="http://www.fastly.com/">Fastly</a>,
+            Rendered by <a href="https://developer.rackspace.com/?nbviewer=awesome">Rackspace</a>
+          </p>
+          <p>
+            nbviewer GitHub <a href="https://github.com/jupyter/nbviewer">repository</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          
+  
+            
+              <p>
+                nbviewer version:
+                <a href="https://github.com/jupyter/nbviewer/commit/38e181afeec4b7527a8a13ef7c3814e36045244c">
+                  38e181a
+                </a>
+              </p>
+            
+          
+  
+  <p>
+    nbconvert version: <a href="https://github.com/jupyter/nbconvert/releases/tag/5.3.1">
+      5.3.1
+    </a>
+  </p>
+  
+
+          
+  
+  
+  <p>
+    Rendered
+    <span class='date' data-date='Mon, 14 May 2018 21:13:22 UTC' title='Mon, 14 May 2018 21:13:22 UTC'>(Mon, 14 May 2018 21:13:22 UTC)</span>
+  </p>
+  
+
+        </div>
+      </div>
+    </footer>
+  
+
+  <script src="/static/components/bootstrap/js/bootstrap.min.js?v=5869c96cc8f19086aee625d670d741f9"></script>
+  <script src="/static/components/headroom.js/dist/headroom.min.js?v=b0a311ea668f8e768ea375f4a7abb81c"></script>
+  <script src="/static/components/headroom.js/dist/jQuery.headroom.min.js?v=f3a1bae118315d0c234afc74dc6aab71"></script>
+
+  
+  
+  <script>
+    $(function(){ $("#menubar").headroom({
+      tolerance: 5,
+      offset: 205,
+      classes: {
+        initial: "animated",
+        pinned: "slideInDown",
+        unpinned: "slideOutUp"
+      }
+    })});
+  </script>
+
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-52617120-5', 'auto',
+       {'storage': 'none'});
+    ga('set', 'anonymizeIp', true);
+    ga('send', 'pageview');
+  </script>
+  
+  <script>
+    require({
+        paths: {
+          moment: "/static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043"
+        }
+      }, ["moment"], function(moment){
+      var date = $("footer .date"),
+        m = moment(new Date(date.data('date'))),
+        update = function(){ date.text(m.fromNow()); };
+      setInterval(update, 61*1000);
+      update();
+      var w = $(window).scroll(function(event){
+        $("body").toggleClass("scrolled", w.scrollTop() > 0);
+      });
+    });
+  </script>
+
+  <!--NEW RELIC Stop Perf Measurement-->
+  
+  <!--NEW RELIC End-->
 </body>
 </html>
