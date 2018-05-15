@@ -11830,7 +11830,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[120]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#enable auto complete</span>
@@ -11845,7 +11845,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[121]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># package for high-performance, easy-to-use data structures and data analysis</span>
@@ -11914,7 +11914,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[122]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">projects</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Projects.csv&#39;</span><span class="p">)</span>
@@ -11929,7 +11929,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[123]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">schools</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/Schools.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -11944,7 +11944,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[124]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39; donations: &#39;</span><span class="p">,</span><span class="n">donations</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -11994,7 +11994,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[125]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up test mode to save some time</span>
@@ -12037,7 +12037,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[126]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df -&gt; donors + donations</span>
@@ -12077,7 +12077,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[127]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12093,7 +12093,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[127]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -12213,7 +12213,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[128]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12229,7 +12229,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[128]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -12353,7 +12353,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[129]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">schools</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12369,7 +12369,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[129]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -12453,7 +12453,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">teachers</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12469,7 +12469,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[130]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -12529,7 +12529,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[131]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
@@ -12724,7 +12724,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[132]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">projects</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12740,7 +12740,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[132]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -12848,7 +12848,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[133]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">resources</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12864,7 +12864,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[133]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -12932,7 +12932,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[134]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -12948,7 +12948,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[134]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -13161,7 +13161,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[135]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)[</span><span class="s1">&#39;Donor Cart Sequence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -13197,7 +13197,7 @@ More than 1 donation is given by: 31.07% donors
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[136]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)[</span><span class="s1">&#39;Donor Cart Sequence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -13259,7 +13259,7 @@ More than 1 donation is given by: 31.07% donors
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span><span class="o">=</span><span class="n">donations_per_donor1</span><span class="o">+</span><span class="n">between1_5</span><span class="o">+</span><span class="n">between5_10</span><span class="o">+</span><span class="n">between10_15</span><span class="o">+</span><span class="n">between15_20</span><span class="o">+</span><span class="n">between20_25</span><span class="o">+</span><span class="n">between25_30</span><span class="o">+</span><span class="n">donations_per_donor_over_29</span>
@@ -13292,7 +13292,7 @@ More than 1 donation is given by: 31.07% donors
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[138]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor_under_10</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
@@ -13338,7 +13338,7 @@ To change this limit, set the config variable
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[139]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Deal with missing values</span>
@@ -13388,7 +13388,7 @@ To change this limit, set the config variable
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[140]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_full_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13404,7 +13404,7 @@ To change this limit, set the config variable
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[140]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -13495,7 +13495,7 @@ One key aspect of evaluation is to ensure that the trained model generalizes for
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[180]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_train_df</span><span class="p">,</span> <span class="n">donations_test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">donations_full_df</span><span class="p">,</span>
@@ -13532,7 +13532,7 @@ One key aspect of evaluation is to ensure that the trained model generalizes for
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[181]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Indexing by Donor Id to speed up the searches during evaluation</span>
@@ -13564,7 +13564,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[182]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#get_projects_donated replaced with get_proj_donated</span>
@@ -13581,7 +13581,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[183]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donor_id</span><span class="o">=</span> <span class="n">donations_df</span><span class="p">[</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">]</span>
@@ -13595,7 +13595,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[184]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Top-N accuracy metrics consts</span>
@@ -13712,7 +13712,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[185]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Preprocessing of text data</span>
@@ -13746,7 +13746,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[185]:</div>
+<div class="prompt output_prompt">Out[27]:</div>
 
 
 
@@ -13772,7 +13772,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[186]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_project_profile</span><span class="p">(</span><span class="n">project_id</span><span class="p">):</span>
@@ -13821,8 +13821,7 @@ interacted -&gt; donated`</p>
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 8015/8015 [00:07&lt;00:00, 1094.88it/s]
-</pre>
+<pre>100%|██████████| 8015/8015 [00:06&lt;00:00, 1243.79it/s]</pre>
 </div>
 </div>
 
@@ -13837,13 +13836,24 @@ interacted -&gt; donated`</p>
 </div>
 </div>
 
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[187]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_full_indexed_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -13859,7 +13869,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[187]:</div>
+<div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -13955,7 +13965,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[188]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donor1</span> <span class="o">=</span> <span class="s2">&quot;0003aba06ccf49f8c44fc2dd3b582411&quot;</span>
@@ -14017,7 +14027,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[189]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_profiles</span> <span class="o">=</span> <span class="n">donor1_profile</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor2_profile</span><span class="p">)</span>
@@ -14037,7 +14047,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[190]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_profiles</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -14053,7 +14063,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[190]:</div>
+<div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14328,7 +14338,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[191]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ContentBasedRecommender</span><span class="p">:</span>
@@ -14373,7 +14383,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[192]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span> <span class="o">=</span> <span class="n">ContentBasedRecommender</span><span class="p">(</span><span class="n">projects</span><span class="p">)</span>
@@ -14390,7 +14400,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[192]:</div>
+<div class="prompt output_prompt">Out[34]:</div>
 
 
 
@@ -14503,7 +14513,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[193]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
@@ -14519,7 +14529,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[193]:</div>
+<div class="prompt output_prompt">Out[35]:</div>
 
 
 
@@ -14632,7 +14642,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[194]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor3</span><span class="p">)</span>
@@ -14648,7 +14658,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[194]:</div>
+<div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -14761,7 +14771,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[195]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor4</span><span class="p">)</span>
@@ -14777,7 +14787,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[195]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -14890,7 +14900,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[196]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor5</span><span class="p">)</span>
@@ -14906,7 +14916,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[196]:</div>
+<div class="prompt output_prompt">Out[38]:</div>
 
 
 
@@ -15019,7 +15029,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[197]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor6</span><span class="p">)</span>
@@ -15035,7 +15045,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[197]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -15148,7 +15158,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[198]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor7</span><span class="p">)</span>
@@ -15164,7 +15174,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[198]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 
@@ -15277,7 +15287,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[199]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor8</span><span class="p">)</span>
@@ -15293,7 +15303,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[199]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -15406,7 +15416,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[200]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor9</span><span class="p">)</span>
@@ -15422,7 +15432,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[200]:</div>
+<div class="prompt output_prompt">Out[42]:</div>
 
 
 
@@ -15535,7 +15545,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[201]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor10</span><span class="p">)</span>
@@ -15551,7 +15561,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[201]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -15680,7 +15690,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[202]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Creating a sparse pivot table with donors in rows and projects in columns</span>
@@ -15701,7 +15711,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[202]:</div>
+<div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -24532,7 +24542,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[203]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Transform the donor-project dataframe into a matrix</span>
@@ -24550,7 +24560,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[203]:</div>
+<div class="prompt output_prompt">Out[45]:</div>
 
 
 
@@ -24569,7 +24579,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[204]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get donor ids</span>
@@ -24587,7 +24597,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[204]:</div>
+<div class="prompt output_prompt">Out[46]:</div>
 
 
 
@@ -24613,7 +24623,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[205]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the first 5 rows of the donor-project matrix</span>
@@ -24630,7 +24640,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[205]:</div>
+<div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -24660,7 +24670,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[206]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#The number of factors to factor the user-item matrix.</span>
@@ -24676,7 +24686,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[207]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">.</span><span class="n">shape</span>
@@ -24692,7 +24702,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[207]:</div>
+<div class="prompt output_prompt">Out[49]:</div>
 
 
 
@@ -24709,7 +24719,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[208]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Vt</span><span class="o">.</span><span class="n">shape</span>
@@ -24725,7 +24735,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[208]:</div>
+<div class="prompt output_prompt">Out[50]:</div>
 
 
 
@@ -24742,7 +24752,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[209]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
@@ -24759,7 +24769,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[209]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 
@@ -24776,7 +24786,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[210]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reconstruct the matrix by multiplying its factors</span>
@@ -24794,25 +24804,25 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[210]:</div>
+<div class="prompt output_prompt">Out[52]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[  5.02218270e-35,   1.11286201e-33,   1.51041188e-33, ...,
-          8.11516439e-22,  -1.37210784e-33,   3.89305702e-19],
-       [ -1.76521357e-33,   9.11374447e-34,  -1.90990808e-33, ...,
-         -8.55062611e-22,   6.73678866e-33,  -3.85922526e-19],
-       [  1.82902841e-34,  -2.35114984e-34,  -2.95530249e-34, ...,
-         -2.06997257e-22,  -7.14915958e-35,  -9.51096398e-20],
+<pre>array([[ -1.27432723e-33,   7.40375208e-37,   7.82791403e-34, ...,
+         -6.94490882e-22,   6.20992296e-34,  -2.88379457e-19],
+       [  3.42734242e-33,   4.49356177e-36,  -7.16761672e-33, ...,
+          1.22539172e-21,  -9.44864311e-34,   4.62477019e-19],
+       [ -1.55860539e-34,   3.86965282e-37,  -1.38522150e-36, ...,
+          5.55677266e-23,   4.88558989e-35,   3.26806441e-20],
        ..., 
-       [  2.24633652e-33,   1.65910764e-33,   2.81776195e-33, ...,
-         -7.93650033e-22,   4.18118744e-33,  -4.05230444e-19],
-       [ -3.34235653e-34,   9.11302004e-34,   1.67832137e-33, ...,
-          9.49837870e-22,   1.08760458e-33,   4.31902105e-19],
-       [  1.45902180e-33,  -7.56922231e-33,   2.38215552e-33, ...,
-          1.22111494e-21,   9.50778163e-33,   4.88172638e-19]])</pre>
+       [  1.10299323e-33,   2.19110337e-36,  -2.62507411e-33, ...,
+          1.75002031e-22,  -9.57167048e-35,   6.41448217e-20],
+       [ -1.93493838e-33,   2.09036246e-36,   9.35050370e-34, ...,
+          4.68577824e-22,   5.26274095e-34,   3.01536344e-19],
+       [  2.56400599e-33,   2.98922670e-35,  -1.84407722e-32, ...,
+         -1.09687011e-21,   8.49902671e-33,  -4.70000263e-19]])</pre>
 </div>
 
 </div>
@@ -24823,7 +24833,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[211]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Converting the reconstructed matrix back to a Pandas dataframe</span>
@@ -24841,7 +24851,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[212]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">cf_preds_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -24857,7 +24867,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[212]:</div>
+<div class="prompt output_prompt">Out[54]:</div>
 
 
 
@@ -24882,7 +24892,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[213]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CFRecommender</span><span class="p">:</span>
@@ -24922,7 +24932,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[214]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cf_recommender_model</span> <span class="o">=</span> <span class="n">CFRecommender</span><span class="p">(</span><span class="n">cf_preds_df</span><span class="p">,</span> <span class="n">projects</span><span class="p">)</span>
@@ -24939,7 +24949,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[214]:</div>
+<div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -24971,73 +24981,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>6.337458e-17</td>
+      <td>6.018746e-17</td>
+      <td>0084b9a5073eb8ca0c4f0dfcd53b7116</td>
+      <td>support mrs. chase's classroom</td>
+      <td>"tell me and i forget. teach me and i remember...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.156122e-17</td>
+      <td>0002d777804d485adbcca7aad4ad96c5</td>
+      <td>document cameras for student centered learning!</td>
+      <td>has someone ever tried to explain a concept to...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.824306e-17</td>
+      <td>0070ee086716b857f879a1d25fd92eea</td>
+      <td>science and engineering made exciting through ...</td>
+      <td>just imagine reinventing the wheel, recreating...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.619326e-17</td>
+      <td>0066d5cb75c16a32bb569097798d747e</td>
+      <td>urban middle school band program needs new ins...</td>
+      <td>in my school 50% of the students are socioecon...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.784154e-17</td>
+      <td>005075ae47f445887641378610b2f755</td>
+      <td>keep our brains and bodies moving, so we can l...</td>
+      <td>the average day in my class involves students ...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.197694e-17</td>
       <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
       <td>little people - big minds</td>
       <td>my students are african american and hispanic....</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>5.644296e-17</td>
-      <td>000529aa89291c6825144b8dbbd399ab</td>
-      <td>tower gardens for our school</td>
-      <td>as service learning coordinators at our elemen...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5.216714e-17</td>
-      <td>006256a8e6df10612ff859688b67ed61</td>
-      <td>all hands on deck to see the siege of boston!</td>
-      <td>taunton public schools is a low income/hi...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3.199114e-17</td>
-      <td>0031eb3832f55a565b91b467ccb961d4</td>
-      <td>may i have this dance, please?</td>
-      <td>the tango music begins. the students look at o...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2.748790e-17</td>
-      <td>004a152bbe8952ea5e9d5ef89c179933</td>
-      <td>claymation experimentation</td>
-      <td>after seeing my students sewing a jabba the hu...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2.408889e-17</td>
-      <td>0029e426fd3296af4fc333580fa895fe</td>
-      <td>everyone needs an address, especially maniac m...</td>
-      <td>"...people will forget what you said, people w...</td>
-    </tr>
-    <tr>
       <th>6</th>
-      <td>1.956324e-17</td>
+      <td>2.058999e-17</td>
       <td>0038ed8f7ee0db9fc6dbb5b0bbb93e68</td>
       <td>purposeful play on the playground</td>
       <td>our students come from a title i school in jer...</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>1.924683e-17</td>
-      <td>0012d94ac914624f70e45fb22206e47e</td>
-      <td>best books of 2015</td>
-      <td>there's no such thing as a kid who hates readi...</td>
+      <td>4.197816e-18</td>
+      <td>00388e34c088cfc273a32642b67c7e60</td>
+      <td>chromebooks for keyboarding</td>
+      <td>our students are some of the hardest working k...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>1.748233e-17</td>
-      <td>008847ff394b52dc61013213ac34ed44</td>
-      <td>help us document our artistic growth!</td>
-      <td>the art room is a very busy place!  it is full...</td>
+      <td>5.871580e-31</td>
+      <td>002cfe58517b9bccae89bbe0a8cca78b</td>
+      <td>technology as tools for special needs</td>
+      <td>i am a special education teacher for a 2nd - 4...</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>1.630202e-17</td>
-      <td>0015703508d8a6703bc0d7f71027fdb4</td>
-      <td>lets all become aware of different cultures</td>
-      <td>help my students make a difference by acknowle...</td>
+      <td>2.993501e-31</td>
+      <td>000d803803ffec70bb1ed35d0d990ad0</td>
+      <td>a field trip of a lifetime</td>
+      <td>we have a fun, energetic bunch of third grade ...</td>
     </tr>
   </tbody>
 </table>
@@ -25052,7 +25062,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[215]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Evaluating Collaborative Filtering (SVD Matrix Factorization) model...&#39;</span><span class="p">)</span>
@@ -25065,61 +25075,10 @@ interacted -&gt; donated`</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Evaluating Collaborative Filtering (SVD Matrix Factorization) model...
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-215-465eeb17e6b5&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Evaluating Collaborative Filtering (SVD Matrix Factorization) model...&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>cf_global_metrics<span class="ansi-blue-fg">,</span> cf_detailed_results_df <span class="ansi-blue-fg">=</span> model_evaluator<span class="ansi-blue-fg">.</span>evaluate_model<span class="ansi-blue-fg">(</span>cf_recommender_model<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;\nGlobal metrics:\n%s&#39;</span> <span class="ansi-blue-fg">%</span> cf_global_metrics<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> cf_detailed_results_df<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-184-b8ad447e03cd&gt;</span> in <span class="ansi-cyan-fg">evaluate_model</span><span class="ansi-blue-fg">(self, model)</span>
-<span class="ansi-green-intense-fg ansi-bold">     77</span>             <span class="ansi-red-fg">#if idx % 100 == 0 and idx &gt; 0:</span>
-<span class="ansi-green-intense-fg ansi-bold">     78</span>             <span class="ansi-red-fg">#    print(&#39;%d users processed&#39; % idx)</span>
-<span class="ansi-green-fg">---&gt; 79</span><span class="ansi-red-fg">             </span>person_metrics <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>evaluate_model_for_user<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">,</span> donor_id<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     80</span>             person_metrics<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;_donor_id&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> donor_id
-<span class="ansi-green-intense-fg ansi-bold">     81</span>             people_metrics<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>person_metrics<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-184-b8ad447e03cd&gt;</span> in <span class="ansi-cyan-fg">evaluate_model_for_user</span><span class="ansi-blue-fg">(self, model, donor_id)</span>
-<span class="ansi-green-intense-fg ansi-bold">     28</span>             person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     29</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 30</span><span class="ansi-red-fg">             </span>person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>int<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     31</span>         donated_projects_count_testset <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>person_donated_projects_testset<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     32</span> 
-
-<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;0053a266af3840dbf8b033a7c8331cf1&#39;</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[216]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cf_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
@@ -25135,7 +25094,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[216]:</div>
+<div class="prompt output_prompt">Out[58]:</div>
 
 
 
@@ -25167,73 +25126,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.328566e-17</td>
-      <td>0070ee086716b857f879a1d25fd92eea</td>
-      <td>science and engineering made exciting through ...</td>
-      <td>just imagine reinventing the wheel, recreating...</td>
+      <td>1.149858e-16</td>
+      <td>004ff83766737c4751008ec1d9f0e608</td>
+      <td>3rd grade history, splash, and a whole lot of ...</td>
+      <td>the a. community and its students are a very s...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.819907e-17</td>
-      <td>005075ae47f445887641378610b2f755</td>
-      <td>keep our brains and bodies moving, so we can l...</td>
-      <td>the average day in my class involves students ...</td>
+      <td>9.554036e-17</td>
+      <td>0066d5cb75c16a32bb569097798d747e</td>
+      <td>urban middle school band program needs new ins...</td>
+      <td>in my school 50% of the students are socioecon...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.796735e-17</td>
-      <td>006e4d8a02dde4626662fcfdb5a4bc41</td>
-      <td>1st full-year h.s. astrochemistry class in nat...</td>
-      <td>emerson was once asked what we would do if the...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1.084884e-17</td>
-      <td>0038ed8f7ee0db9fc6dbb5b0bbb93e68</td>
-      <td>purposeful play on the playground</td>
-      <td>our students come from a title i school in jer...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1.068173e-17</td>
-      <td>003425a6a801eec3e9f721b6dd297c3b</td>
-      <td>chemistry lab equipment</td>
-      <td>we are trying to engage more students in scien...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1.022494e-17</td>
-      <td>00657a2af1154d87fb9b18548bcfe7b5</td>
-      <td>little scientists</td>
-      <td>in our classrooms we usually focus on reading ...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7.260954e-18</td>
-      <td>005fd7a92673d0747831d9cf89e8a8f0</td>
-      <td>mission: library rejuvination</td>
-      <td>sitting at a desk for a sustained period of ti...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>6.046056e-18</td>
+      <td>6.166103e-17</td>
       <td>00177290279939fb33386b29198c450e</td>
       <td>reader's workshop = instilling a love of readi...</td>
       <td>we are a brand new charter school that has onl...</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>5.857315e-18</td>
+      <th>3</th>
+      <td>5.569255e-17</td>
+      <td>000529aa89291c6825144b8dbbd399ab</td>
+      <td>tower gardens for our school</td>
+      <td>as service learning coordinators at our elemen...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.198562e-17</td>
+      <td>0031eb3832f55a565b91b467ccb961d4</td>
+      <td>may i have this dance, please?</td>
+      <td>the tango music begins. the students look at o...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.994672e-17</td>
       <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
       <td>little people - big minds</td>
       <td>my students are african american and hispanic....</td>
     </tr>
     <tr>
+      <th>6</th>
+      <td>2.759725e-17</td>
+      <td>004a152bbe8952ea5e9d5ef89c179933</td>
+      <td>claymation experimentation</td>
+      <td>after seeing my students sewing a jabba the hu...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.592523e-17</td>
+      <td>003425a6a801eec3e9f721b6dd297c3b</td>
+      <td>chemistry lab equipment</td>
+      <td>we are trying to engage more students in scien...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.478789e-17</td>
+      <td>0029e426fd3296af4fc333580fa895fe</td>
+      <td>everyone needs an address, especially maniac m...</td>
+      <td>"...people will forget what you said, people w...</td>
+    </tr>
+    <tr>
       <th>9</th>
-      <td>4.402004e-18</td>
-      <td>006256a8e6df10612ff859688b67ed61</td>
-      <td>all hands on deck to see the siege of boston!</td>
-      <td>taunton public schools is a low income/hi...</td>
+      <td>2.115823e-17</td>
+      <td>005fd7a92673d0747831d9cf89e8a8f0</td>
+      <td>mission: library rejuvination</td>
+      <td>sitting at a desk for a sustained period of ti...</td>
     </tr>
   </tbody>
 </table>
@@ -25256,7 +25215,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[217]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">HybridRecommender</span><span class="p">:</span>
@@ -25311,7 +25270,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[218]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor1</span><span class="p">)</span>
@@ -25327,7 +25286,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[218]:</div>
+<div class="prompt output_prompt">Out[60]:</div>
 
 
 
@@ -25359,73 +25318,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>4.661208e-18</td>
+      <td>9.046021e-18</td>
+      <td>0084b9a5073eb8ca0c4f0dfcd53b7116</td>
+      <td>support mrs. chase's classroom</td>
+      <td>"tell me and i forget. teach me and i remember...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.272464e-18</td>
+      <td>0002d777804d485adbcca7aad4ad96c5</td>
+      <td>document cameras for student centered learning!</td>
+      <td>has someone ever tried to explain a concept to...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.616407e-18</td>
       <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
       <td>little people - big minds</td>
       <td>my students are african american and hispanic....</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>4.345448e-18</td>
-      <td>0012d94ac914624f70e45fb22206e47e</td>
-      <td>best books of 2015</td>
-      <td>there's no such thing as a kid who hates readi...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1.850304e-18</td>
-      <td>004a152bbe8952ea5e9d5ef89c179933</td>
-      <td>claymation experimentation</td>
-      <td>after seeing my students sewing a jabba the hu...</td>
-    </tr>
-    <tr>
       <th>3</th>
-      <td>1.351831e-18</td>
-      <td>0012f7359b9705f46355a1c2b8ecbc1d</td>
-      <td>leveled books to help us read!</td>
-      <td>have you ever been told you need to read, but ...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1.306932e-18</td>
-      <td>003ed2285483b759f508f29076143447</td>
-      <td>language arts resources</td>
-      <td>"the more that you read, the more things you w...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1.279820e-18</td>
+      <td>1.346990e-18</td>
       <td>0038ed8f7ee0db9fc6dbb5b0bbb93e68</td>
       <td>purposeful play on the playground</td>
       <td>our students come from a title i school in jer...</td>
     </tr>
     <tr>
+      <th>4</th>
+      <td>3.147251e-32</td>
+      <td>006d4d96be19ec61c2a393377727953b</td>
+      <td>we want to read!</td>
+      <td>my 7th and 8th grade students come from povert...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7.293152e-33</td>
+      <td>0039443ff3323b93877cbdfe9ccae743</td>
+      <td>help!  we need headphones!</td>
+      <td>my third grade classroom is an active, lively ...</td>
+    </tr>
+    <tr>
       <th>6</th>
-      <td>9.635233e-19</td>
-      <td>00173eb8e417bbe9fecc3da05893878c</td>
-      <td>a calming classroom carpet</td>
-      <td>"sometimes the questions are complicated and t...</td>
+      <td>5.311255e-33</td>
+      <td>0081553d51ed5d2529e2e38b0827133a</td>
+      <td>help us zoom up through the reading levels!</td>
+      <td>i am working hard to advance my first graders'...</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>6.091065e-19</td>
-      <td>0029c10b4286065811a493b54f85c97e</td>
-      <td>writing our way through kindergarten!!</td>
-      <td>my students are motivated and eager to learn. ...</td>
+      <td>4.240088e-33</td>
+      <td>0061985805f1348cdfe75ed2d8441104</td>
+      <td>more books = better readers!</td>
+      <td>perseverance.  resilience.  open-mindedness.  ...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>5.483887e-19</td>
-      <td>003c964592d53d6089d0d8b0d3ee4c0a</td>
-      <td>to read or not to read to meet ccss? we want t...</td>
-      <td>students are in a rut with a lack of reading m...</td>
+      <td>2.497565e-33</td>
+      <td>0008d8361e652b3b7c59e11bec470f26</td>
+      <td>please help us add graphic novels to our esl l...</td>
+      <td>our middle school is a diverse high-needs scho...</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>2.744281e-19</td>
-      <td>0072118edd7e0c5e84d23be2424bebd9</td>
-      <td>our learning is on fire!</td>
-      <td>we are an urban school with a large shelter (h...</td>
+      <td>1.932313e-33</td>
+      <td>0034fdff7d6f1fd118e6a20cde0a3afd</td>
+      <td>the more we read, the more we know, the smarte...</td>
+      <td>the first graders that i get the joy of teachi...</td>
     </tr>
   </tbody>
 </table>
@@ -25440,7 +25399,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[219]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
@@ -25456,7 +25415,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[219]:</div>
+<div class="prompt output_prompt">Out[61]:</div>
 
 
 
@@ -25488,73 +25447,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>8.340100e-19</td>
-      <td>00657a2af1154d87fb9b18548bcfe7b5</td>
-      <td>little scientists</td>
-      <td>in our classrooms we usually focus on reading ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7.071026e-19</td>
-      <td>006e4d8a02dde4626662fcfdb5a4bc41</td>
-      <td>1st full-year h.s. astrochemistry class in nat...</td>
-      <td>emerson was once asked what we would do if the...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7.066363e-19</td>
+      <td>7.206668e-18</td>
       <td>00177290279939fb33386b29198c450e</td>
       <td>reader's workshop = instilling a love of readi...</td>
       <td>we are a brand new charter school that has onl...</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>5.205112e-18</td>
+      <td>000529aa89291c6825144b8dbbd399ab</td>
+      <td>tower gardens for our school</td>
+      <td>as service learning coordinators at our elemen...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.554591e-18</td>
+      <td>004ff83766737c4751008ec1d9f0e608</td>
+      <td>3rd grade history, splash, and a whole lot of ...</td>
+      <td>the a. community and its students are a very s...</td>
+    </tr>
+    <tr>
       <th>3</th>
-      <td>7.035467e-19</td>
-      <td>005075ae47f445887641378610b2f755</td>
-      <td>keep our brains and bodies moving, so we can l...</td>
-      <td>the average day in my class involves students ...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4.947283e-19</td>
-      <td>005fd7a92673d0747831d9cf89e8a8f0</td>
-      <td>mission: library rejuvination</td>
-      <td>sitting at a desk for a sustained period of ti...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>3.958337e-19</td>
-      <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
-      <td>little people - big minds</td>
-      <td>my students are african american and hispanic....</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2.563340e-19</td>
+      <td>2.107606e-18</td>
       <td>0012d94ac914624f70e45fb22206e47e</td>
       <td>best books of 2015</td>
       <td>there's no such thing as a kid who hates readi...</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>1.194938e-19</td>
+      <th>4</th>
+      <td>2.023780e-18</td>
+      <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
+      <td>little people - big minds</td>
+      <td>my students are african american and hispanic....</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.441625e-18</td>
+      <td>005fd7a92673d0747831d9cf89e8a8f0</td>
+      <td>mission: library rejuvination</td>
+      <td>sitting at a desk for a sustained period of ti...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>9.837948e-19</td>
       <td>0015703508d8a6703bc0d7f71027fdb4</td>
       <td>lets all become aware of different cultures</td>
       <td>help my students make a difference by acknowle...</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>1.038452e-19</td>
+      <th>7</th>
+      <td>8.550656e-19</td>
       <td>0029c10b4286065811a493b54f85c97e</td>
       <td>writing our way through kindergarten!!</td>
       <td>my students are motivated and eager to learn. ...</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>8.841312e-20</td>
+      <th>8</th>
+      <td>7.280602e-19</td>
       <td>003ed2285483b759f508f29076143447</td>
       <td>language arts resources</td>
       <td>"the more that you read, the more things you w...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6.206409e-19</td>
+      <td>0012f7359b9705f46355a1c2b8ecbc1d</td>
+      <td>leveled books to help us read!</td>
+      <td>have you ever been told you need to read, but ...</td>
     </tr>
   </tbody>
 </table>
