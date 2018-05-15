@@ -11987,97 +11987,13 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Set-up-test-mode-where-only-10000-rows-of-donation/donor-dataframe-are-used.">Set up test mode where only 10000 rows of donation/donor dataframe are used.<a class="anchor-link" href="#Set-up-test-mode-where-only-10000-rows-of-donation/donor-dataframe-are-used.">&#182;</a></h3><p>When testing is complete we will need to turn off test mode.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up test mode to save some time</span>
-<span class="n">test_mode</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="c1"># Merge datasets</span>
-<span class="n">donations</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">donors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Donor ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">projects</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;Project ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
-
-<span class="c1"># only load a few lines in test mode</span>
-<span class="k">if</span> <span class="n">test_mode</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-
-<span class="n">donations_df</span> <span class="o">=</span> <span class="n">df</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of df is &#39;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>shape of df is  (10000, 25)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df -&gt; donors + donations</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of df is &#39;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>shape of df is  (10000, 25)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="EDA">EDA<a class="anchor-link" href="#EDA">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12093,7 +12009,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -12123,10 +12039,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
       <th>Donation Amount</th>
       <th>Donor Cart Sequence</th>
       <th>Donation Received Date</th>
-      <th>Donor City</th>
-      <th>Donor State</th>
-      <th>Donor Is Teacher</th>
-      <th>Donor Zip</th>
     </tr>
   </thead>
   <tbody>
@@ -12139,10 +12051,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
       <td>178.37</td>
       <td>11</td>
       <td>2016-08-23 13:15:57</td>
-      <td>West Jordan</td>
-      <td>Utah</td>
-      <td>No</td>
-      <td>840</td>
     </tr>
     <tr>
       <th>1</th>
@@ -12153,10 +12061,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
       <td>25.00</td>
       <td>2</td>
       <td>2016-06-06 20:05:23</td>
-      <td>Riverton</td>
-      <td>Utah</td>
-      <td>Yes</td>
-      <td>840</td>
     </tr>
     <tr>
       <th>2</th>
@@ -12167,10 +12071,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
       <td>20.00</td>
       <td>3</td>
       <td>2016-06-06 14:08:46</td>
-      <td>Riverton</td>
-      <td>Utah</td>
-      <td>No</td>
-      <td>840</td>
     </tr>
     <tr>
       <th>3</th>
@@ -12181,10 +12081,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
       <td>25.00</td>
       <td>1</td>
       <td>2016-05-15 10:23:04</td>
-      <td>Phoenix</td>
-      <td>Arizona</td>
-      <td>No</td>
-      <td>850</td>
     </tr>
     <tr>
       <th>4</th>
@@ -12195,10 +12091,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
       <td>25.00</td>
       <td>2</td>
       <td>2016-05-17 01:23:38</td>
-      <td>Salt Lake City</td>
-      <td>Utah</td>
-      <td>Yes</td>
-      <td>841</td>
     </tr>
   </tbody>
 </table>
@@ -12213,7 +12105,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12229,7 +12121,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -12353,7 +12245,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">schools</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12369,7 +12261,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -12453,7 +12345,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">teachers</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12469,7 +12361,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -12529,7 +12421,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
@@ -12724,7 +12616,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">projects</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12740,7 +12632,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -12848,7 +12740,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">resources</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -12864,7 +12756,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -12930,226 +12822,6 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[15]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Project ID</th>
-      <th>Donation ID</th>
-      <th>Donor ID</th>
-      <th>Donation Included Optional Donation</th>
-      <th>Donation Amount</th>
-      <th>Donor Cart Sequence</th>
-      <th>Donation Received Date</th>
-      <th>Donor City</th>
-      <th>Donor State</th>
-      <th>Donor Is Teacher</th>
-      <th>Donor Zip</th>
-      <th>School ID</th>
-      <th>Teacher ID</th>
-      <th>Teacher Project Posted Sequence</th>
-      <th>Project Type</th>
-      <th>Project Title</th>
-      <th>Project Essay</th>
-      <th>Project Subject Category Tree</th>
-      <th>Project Subject Subcategory Tree</th>
-      <th>Project Grade Level Category</th>
-      <th>Project Resource Category</th>
-      <th>Project Cost</th>
-      <th>Project Posted Date</th>
-      <th>Project Current Status</th>
-      <th>Project Fully Funded Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>000009891526c0ade7180f8423792063</td>
-      <td>688729120858666221208529ee3fc18e</td>
-      <td>1f4b5b6e68445c6c4a0509b3aca93f38</td>
-      <td>No</td>
-      <td>178.37</td>
-      <td>11</td>
-      <td>2016-08-23 13:15:57</td>
-      <td>West Jordan</td>
-      <td>Utah</td>
-      <td>No</td>
-      <td>840</td>
-      <td>5aa86a53f658c198fd4e42c541411c76</td>
-      <td>6d5b22d39e68c656071a842732c63a0c</td>
-      <td>6</td>
-      <td>Teacher-Led</td>
-      <td>OHMS Musician Chair Cart</td>
-      <td>the music students in our classes perform freq...</td>
-      <td>Music &amp; The Arts</td>
-      <td>Music</td>
-      <td>Grades 6-8</td>
-      <td>Other</td>
-      <td>$529.68</td>
-      <td>2016-05-13</td>
-      <td>Fully Funded</td>
-      <td>2016-08-23</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>000009891526c0ade7180f8423792063</td>
-      <td>dcf1071da3aa3561f91ac689d1f73dee</td>
-      <td>4aaab6d244bf3599682239ed5591af8a</td>
-      <td>Yes</td>
-      <td>25.00</td>
-      <td>2</td>
-      <td>2016-06-06 20:05:23</td>
-      <td>Riverton</td>
-      <td>Utah</td>
-      <td>Yes</td>
-      <td>840</td>
-      <td>5aa86a53f658c198fd4e42c541411c76</td>
-      <td>6d5b22d39e68c656071a842732c63a0c</td>
-      <td>6</td>
-      <td>Teacher-Led</td>
-      <td>OHMS Musician Chair Cart</td>
-      <td>the music students in our classes perform freq...</td>
-      <td>Music &amp; The Arts</td>
-      <td>Music</td>
-      <td>Grades 6-8</td>
-      <td>Other</td>
-      <td>$529.68</td>
-      <td>2016-05-13</td>
-      <td>Fully Funded</td>
-      <td>2016-08-23</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>000009891526c0ade7180f8423792063</td>
-      <td>18a234b9d1e538c431761d521ea7799d</td>
-      <td>0b0765dc9c759adc48a07688ba25e94e</td>
-      <td>Yes</td>
-      <td>20.00</td>
-      <td>3</td>
-      <td>2016-06-06 14:08:46</td>
-      <td>Riverton</td>
-      <td>Utah</td>
-      <td>No</td>
-      <td>840</td>
-      <td>5aa86a53f658c198fd4e42c541411c76</td>
-      <td>6d5b22d39e68c656071a842732c63a0c</td>
-      <td>6</td>
-      <td>Teacher-Led</td>
-      <td>OHMS Musician Chair Cart</td>
-      <td>the music students in our classes perform freq...</td>
-      <td>Music &amp; The Arts</td>
-      <td>Music</td>
-      <td>Grades 6-8</td>
-      <td>Other</td>
-      <td>$529.68</td>
-      <td>2016-05-13</td>
-      <td>Fully Funded</td>
-      <td>2016-08-23</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>000009891526c0ade7180f8423792063</td>
-      <td>38d2744bf9138b0b57ed581c76c0e2da</td>
-      <td>377944ad61f72d800b25ec1862aec363</td>
-      <td>Yes</td>
-      <td>25.00</td>
-      <td>1</td>
-      <td>2016-05-15 10:23:04</td>
-      <td>Phoenix</td>
-      <td>Arizona</td>
-      <td>No</td>
-      <td>850</td>
-      <td>5aa86a53f658c198fd4e42c541411c76</td>
-      <td>6d5b22d39e68c656071a842732c63a0c</td>
-      <td>6</td>
-      <td>Teacher-Led</td>
-      <td>OHMS Musician Chair Cart</td>
-      <td>the music students in our classes perform freq...</td>
-      <td>Music &amp; The Arts</td>
-      <td>Music</td>
-      <td>Grades 6-8</td>
-      <td>Other</td>
-      <td>$529.68</td>
-      <td>2016-05-13</td>
-      <td>Fully Funded</td>
-      <td>2016-08-23</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>000009891526c0ade7180f8423792063</td>
-      <td>5a032791e31167a70206bfb86fb60035</td>
-      <td>6d5b22d39e68c656071a842732c63a0c</td>
-      <td>Yes</td>
-      <td>25.00</td>
-      <td>2</td>
-      <td>2016-05-17 01:23:38</td>
-      <td>Salt Lake City</td>
-      <td>Utah</td>
-      <td>Yes</td>
-      <td>841</td>
-      <td>5aa86a53f658c198fd4e42c541411c76</td>
-      <td>6d5b22d39e68c656071a842732c63a0c</td>
-      <td>6</td>
-      <td>Teacher-Led</td>
-      <td>OHMS Musician Chair Cart</td>
-      <td>the music students in our classes perform freq...</td>
-      <td>Music &amp; The Arts</td>
-      <td>Music</td>
-      <td>Grades 6-8</td>
-      <td>Other</td>
-      <td>$529.68</td>
-      <td>2016-05-13</td>
-      <td>Fully Funded</td>
-      <td>2016-08-23</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13161,7 +12833,7 @@ SZI6ZFCXJEmSOvT/AYDpqwGXHkFvAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)[</span><span class="s1">&#39;Donor Cart Sequence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -13197,7 +12869,7 @@ More than 1 donation is given by: 31.07% donors
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)[</span><span class="s1">&#39;Donor Cart Sequence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -13259,7 +12931,7 @@ More than 1 donation is given by: 31.07% donors
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span><span class="o">=</span><span class="n">donations_per_donor1</span><span class="o">+</span><span class="n">between1_5</span><span class="o">+</span><span class="n">between5_10</span><span class="o">+</span><span class="n">between10_15</span><span class="o">+</span><span class="n">between15_20</span><span class="o">+</span><span class="n">between20_25</span><span class="o">+</span><span class="n">between25_30</span><span class="o">+</span><span class="n">donations_per_donor_over_29</span>
@@ -13292,7 +12964,7 @@ More than 1 donation is given by: 31.07% donors
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_per_donor_under_10</span> <span class="o">=</span> <span class="p">(</span><span class="n">donations_per_donor</span> <span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span><span class="mi">100</span>
@@ -13335,6 +13007,90 @@ To change this limit, set the config variable
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Set-up-test-mode-where-only-10000-rows-of-donation/donor-dataframe-are-used.">Set up test mode where only 10000 rows of donation/donor dataframe are used.<a class="anchor-link" href="#Set-up-test-mode-where-only-10000-rows-of-donation/donor-dataframe-are-used.">&#182;</a></h3><p>When testing is complete we will need to turn off test mode.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up test mode to save some time</span>
+<span class="n">test_mode</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Merge datasets</span>
+<span class="n">donations</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">donors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Donor ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">donations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">projects</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;Project ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="c1"># only load a few lines in test mode</span>
+<span class="k">if</span> <span class="n">test_mode</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">donations_df</span> <span class="o">=</span> <span class="n">df</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of df is &#39;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>shape of df is  (10000, 25)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df -&gt; donors + donations + projects</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of df is &#39;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>shape of df is  (10000, 25)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13677,7 +13433,7 @@ interacted -&gt; donated`</p>
             <span class="c1">#if idx % 100 == 0 and idx &gt; 0:</span>
             <span class="c1">#    print(&#39;%d users processed&#39; % idx)</span>
             <span class="n">person_metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_model_for_user</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">donor_id</span><span class="p">)</span>  
-            <span class="n">person_metrics</span><span class="p">[</span><span class="s1">&#39;_donor_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">donor_id</span>
+            <span class="n">person_metrics</span><span class="p">[</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">donor_id</span>
             <span class="n">people_metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">person_metrics</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> users processed&#39;</span> <span class="o">%</span> <span class="n">idx</span><span class="p">)</span>
 
@@ -13766,7 +13522,8 @@ interacted -&gt; donated`</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Donor-profile">Donor profile<a class="anchor-link" href="#Donor-profile">&#182;</a></h3>
+<p>To model the user profile, we take all the item profiles the user has interacted and average them. The average is weighted by the interaction strength, in other words, the articles the user has interacted the most (eg. liked or commented) will have a higher strength in the final user profile.</p>
+
 </div>
 </div>
 </div>
@@ -13794,16 +13551,26 @@ interacted -&gt; donated`</p>
     <span class="n">donor_profile_norm</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">donor_project_strengths_weighted_avg</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">donor_profile_norm</span>
 
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
 
 <span class="k">def</span> <span class="nf">build_donors_profiles</span><span class="p">():</span> 
     <span class="n">donations_indexed_df</span> <span class="o">=</span> <span class="n">donations_full_df</span><span class="p">[</span><span class="n">donations_full_df</span><span class="p">[</span><span class="s1">&#39;Project ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">projects</span><span class="p">[</span><span class="s1">&#39;Project ID&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Donor ID&#39;</span><span class="p">)</span>
     <span class="n">donor_profiles</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">donor_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">donations_indexed_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="k">for</span> <span class="n">donor_id</span> <span class="ow">in</span> <span class="n">donations_indexed_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">build_donors_profile</span><span class="p">(</span><span class="n">donor_id</span><span class="p">,</span> <span class="n">donations_indexed_df</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">donor_profiles</span>
+</pre></div>
 
-<span class="n">donor_profiles</span> <span class="o">=</span> <span class="n">build_donors_profiles</span><span class="p">()</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">donor_profiles</span> <span class="o">=</span> <span class="n">build_donors_profiles</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# of donors with profiles: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">donor_profiles</span><span class="p">))</span>
 </pre></div>
 
@@ -13820,29 +13587,8 @@ interacted -&gt; donated`</p>
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 8015/8015 [00:06&lt;00:00, 1243.79it/s]</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre># of donors with profiles: 8015
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
 </pre>
 </div>
 </div>
@@ -13853,7 +13599,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donations_full_indexed_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -13869,7 +13615,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -13963,9 +13709,18 @@ interacted -&gt; donated`</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Get top 5 terms for 10 donors</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">donor1</span> <span class="o">=</span> <span class="s2">&quot;0003aba06ccf49f8c44fc2dd3b582411&quot;</span>
@@ -13980,43 +13735,43 @@ interacted -&gt; donated`</p>
 <span class="n">donor10</span> <span class="o">=</span> <span class="s2">&quot;0052dd04a7cf2d91db791c94dec448ac&quot;</span>
 <span class="n">donor1_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token1&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance1&#39;</span><span class="p">])</span>
 <span class="n">donor2_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token2&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance2&#39;</span><span class="p">])</span>
 <span class="n">donor3_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor3</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token3&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance3&#39;</span><span class="p">])</span>
 <span class="n">donor4_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor4</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token4&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance4&#39;</span><span class="p">])</span>
 <span class="n">donor5_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor5</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token5&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance5&#39;</span><span class="p">])</span>
 <span class="n">donor6_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor6</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token6&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance6&#39;</span><span class="p">])</span>
 <span class="n">donor7_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor7</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token7&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance7&#39;</span><span class="p">])</span>
 <span class="n">donor8_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor8</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token8&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance8&#39;</span><span class="p">])</span>
 <span class="n">donor9_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor9</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token9&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance9&#39;</span><span class="p">])</span>
 <span class="n">donor10_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_feature_names</span><span class="p">,</span> 
                         <span class="n">donor_profiles</span><span class="p">[</span><span class="n">donor10</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> 
-                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">5</span><span class="p">],</span>
                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;token10&#39;</span><span class="p">,</span> <span class="s1">&#39;relevance10&#39;</span><span class="p">])</span>
 </pre></div>
 
@@ -14025,9 +13780,18 @@ interacted -&gt; donated`</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Join all the info into one table</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_profiles</span> <span class="o">=</span> <span class="n">donor1_profile</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">donor2_profile</span><span class="p">)</span>
@@ -14045,9 +13809,18 @@ interacted -&gt; donated`</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Examine the results</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_profiles</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -14063,7 +13836,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -14212,111 +13985,6 @@ interacted -&gt; donated`</p>
       <td>literature</td>
       <td>0.187446</td>
     </tr>
-    <tr>
-      <th>5</th>
-      <td>running</td>
-      <td>0.186840</td>
-      <td>writing</td>
-      <td>0.164691</td>
-      <td>create</td>
-      <td>0.199808</td>
-      <td>research</td>
-      <td>0.175615</td>
-      <td>dates</td>
-      <td>0.168017</td>
-      <td>experience</td>
-      <td>0.166451</td>
-      <td>personal</td>
-      <td>0.156511</td>
-      <td>experience</td>
-      <td>0.166451</td>
-      <td>weapons</td>
-      <td>0.185847</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>advance</td>
-      <td>0.185617</td>
-      <td>books</td>
-      <td>0.135212</td>
-      <td>picture</td>
-      <td>0.199157</td>
-      <td>presentations</td>
-      <td>0.174949</td>
-      <td>ita</td>
-      <td>0.168017</td>
-      <td>performance</td>
-      <td>0.158564</td>
-      <td>independent</td>
-      <td>0.147382</td>
-      <td>performance</td>
-      <td>0.158564</td>
-      <td>30</td>
-      <td>0.153560</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>groups</td>
-      <td>0.173083</td>
-      <td>reading</td>
-      <td>0.113385</td>
-      <td>writing</td>
-      <td>0.187631</td>
-      <td>lessons</td>
-      <td>0.171142</td>
-      <td>backyards</td>
-      <td>0.148408</td>
-      <td>live</td>
-      <td>0.154904</td>
-      <td>items</td>
-      <td>0.141920</td>
-      <td>live</td>
-      <td>0.154904</td>
-      <td>reflects</td>
-      <td>0.153031</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>order</td>
-      <td>0.163861</td>
-      <td>weaved</td>
-      <td>0.112053</td>
-      <td>express</td>
-      <td>0.181023</td>
-      <td>use</td>
-      <td>0.150782</td>
-      <td>coaches</td>
-      <td>0.148408</td>
-      <td>play</td>
-      <td>0.154460</td>
-      <td>hats</td>
-      <td>0.141850</td>
-      <td>play</td>
-      <td>0.154460</td>
-      <td>classic</td>
-      <td>0.128033</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>book</td>
-      <td>0.158681</td>
-      <td>bees</td>
-      <td>0.102160</td>
-      <td>inspire</td>
-      <td>0.172123</td>
-      <td>working</td>
-      <td>0.134765</td>
-      <td>active</td>
-      <td>0.145138</td>
-      <td>draw</td>
-      <td>0.150138</td>
-      <td>born</td>
-      <td>0.118058</td>
-      <td>draw</td>
-      <td>0.150138</td>
-      <td>obstacles</td>
-      <td>0.118095</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -14338,7 +14006,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ContentBasedRecommender</span><span class="p">:</span>
@@ -14383,7 +14051,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span> <span class="o">=</span> <span class="n">ContentBasedRecommender</span><span class="p">(</span><span class="n">projects</span><span class="p">)</span>
@@ -14400,7 +14068,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[34]:</div>
+<div class="prompt output_prompt">Out[35]:</div>
 
 
 
@@ -14513,7 +14181,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
@@ -14529,7 +14197,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -14642,7 +14310,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor3</span><span class="p">)</span>
@@ -14658,7 +14326,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -14771,7 +14439,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor4</span><span class="p">)</span>
@@ -14787,7 +14455,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="prompt output_prompt">Out[38]:</div>
 
 
 
@@ -14900,7 +14568,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor5</span><span class="p">)</span>
@@ -14916,7 +14584,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[38]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -15029,7 +14697,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor6</span><span class="p">)</span>
@@ -15045,7 +14713,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[39]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 
@@ -15158,7 +14826,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor7</span><span class="p">)</span>
@@ -15174,7 +14842,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -15287,7 +14955,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor8</span><span class="p">)</span>
@@ -15303,7 +14971,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[41]:</div>
+<div class="prompt output_prompt">Out[42]:</div>
 
 
 
@@ -15416,7 +15084,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor9</span><span class="p">)</span>
@@ -15432,7 +15100,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[42]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -15545,7 +15213,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_based_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor10</span><span class="p">)</span>
@@ -15561,7 +15229,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[43]:</div>
+<div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -15672,11 +15340,78 @@ interacted -&gt; donated`</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Evaluating Content-Based Filtering model...&#39;</span><span class="p">)</span>
+<span class="n">cb_global_metrics</span><span class="p">,</span> <span class="n">cb_detailed_results_df</span> <span class="o">=</span> <span class="n">model_evaluator</span><span class="o">.</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">content_based_recommender_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Global metrics:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cb_global_metrics</span><span class="p">)</span>
+<span class="n">cb_detailed_results_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Evaluating Content-Based Filtering model...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-45-40f51e0c6e51&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Evaluating Content-Based Filtering model...&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>cb_global_metrics<span class="ansi-blue-fg">,</span> cb_detailed_results_df <span class="ansi-blue-fg">=</span> model_evaluator<span class="ansi-blue-fg">.</span>evaluate_model<span class="ansi-blue-fg">(</span>content_based_recommender_model<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;\nGlobal metrics:\n%s&#39;</span> <span class="ansi-blue-fg">%</span> cb_global_metrics<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> cb_detailed_results_df<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-26-0d2382b346fe&gt;</span> in <span class="ansi-cyan-fg">evaluate_model</span><span class="ansi-blue-fg">(self, model)</span>
+<span class="ansi-green-intense-fg ansi-bold">     77</span>             <span class="ansi-red-fg">#if idx % 100 == 0 and idx &gt; 0:</span>
+<span class="ansi-green-intense-fg ansi-bold">     78</span>             <span class="ansi-red-fg">#    print(&#39;%d users processed&#39; % idx)</span>
+<span class="ansi-green-fg">---&gt; 79</span><span class="ansi-red-fg">             </span>person_metrics <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>evaluate_model_for_user<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">,</span> donor_id<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     80</span>             person_metrics<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Donor ID&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> donor_id
+<span class="ansi-green-intense-fg ansi-bold">     81</span>             people_metrics<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>person_metrics<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-26-0d2382b346fe&gt;</span> in <span class="ansi-cyan-fg">evaluate_model_for_user</span><span class="ansi-blue-fg">(self, model, donor_id)</span>
+<span class="ansi-green-intense-fg ansi-bold">     28</span>             person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     29</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 30</span><span class="ansi-red-fg">             </span>person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>int<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     31</span>         donated_projects_count_testset <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>person_donated_projects_testset<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     32</span> 
+
+<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;0053a266af3840dbf8b033a7c8331cf1&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Create-the-donor-project-matrix">Create the donor-project matrix<a class="anchor-link" href="#Create-the-donor-project-matrix">&#182;</a></h1>
+<h1 id="Collaborative-Filtering-model">Collaborative Filtering model<a class="anchor-link" href="#Collaborative-Filtering-model">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -15684,13 +15419,22 @@ interacted -&gt; donated`</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Matrix-Factorization">Matrix Factorization<a class="anchor-link" href="#Matrix-Factorization">&#182;</a></h3>
+<h2 id="Create-the-donor-project-matrix">Create the donor-project matrix<a class="anchor-link" href="#Create-the-donor-project-matrix">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Matrix Factorization</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Creating a sparse pivot table with donors in rows and projects in columns</span>
@@ -15711,7 +15455,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[44]:</div>
+<div class="prompt output_prompt">Out[49]:</div>
 
 
 
@@ -24542,7 +24286,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Transform the donor-project dataframe into a matrix</span>
@@ -24560,7 +24304,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[45]:</div>
+<div class="prompt output_prompt">Out[50]:</div>
 
 
 
@@ -24579,7 +24323,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get donor ids</span>
@@ -24597,7 +24341,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[46]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 
@@ -24623,7 +24367,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the first 5 rows of the donor-project matrix</span>
@@ -24640,7 +24384,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[47]:</div>
+<div class="prompt output_prompt">Out[52]:</div>
 
 
 
@@ -24670,11 +24414,11 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#The number of factors to factor the user-item matrix.</span>
-<span class="n">NUMBER_OF_FACTORS_MF</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">NUMBER_OF_FACTORS_MF</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="c1">#Performs matrix factorization of the original user item matrix</span>
 <span class="n">U</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">svds</span><span class="p">(</span><span class="n">donors_projects_pivot_matrix</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">NUMBER_OF_FACTORS_MF</span><span class="p">)</span>
 </pre></div>
@@ -24686,7 +24430,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">.</span><span class="n">shape</span>
@@ -24702,13 +24446,13 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[49]:</div>
+<div class="prompt output_prompt">Out[54]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(6471, 20)</pre>
+<pre>(6471, 15)</pre>
 </div>
 
 </div>
@@ -24719,7 +24463,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Vt</span><span class="o">.</span><span class="n">shape</span>
@@ -24735,13 +24479,13 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[50]:</div>
+<div class="prompt output_prompt">Out[55]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(20, 1756)</pre>
+<pre>(15, 1756)</pre>
 </div>
 
 </div>
@@ -24752,7 +24496,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
@@ -24769,13 +24513,13 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[51]:</div>
+<div class="prompt output_prompt">Out[56]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(20, 20)</pre>
+<pre>(15, 15)</pre>
 </div>
 
 </div>
@@ -24786,7 +24530,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reconstruct the matrix by multiplying its factors</span>
@@ -24804,25 +24548,25 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[52]:</div>
+<div class="prompt output_prompt">Out[57]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ -1.27432723e-33,   7.40375208e-37,   7.82791403e-34, ...,
-         -6.94490882e-22,   6.20992296e-34,  -2.88379457e-19],
-       [  3.42734242e-33,   4.49356177e-36,  -7.16761672e-33, ...,
-          1.22539172e-21,  -9.44864311e-34,   4.62477019e-19],
-       [ -1.55860539e-34,   3.86965282e-37,  -1.38522150e-36, ...,
-          5.55677266e-23,   4.88558989e-35,   3.26806441e-20],
+<pre>array([[ -9.89388514e-34,  -4.10966467e-36,   2.70229305e-33, ...,
+          6.05231199e-22,  -6.78792346e-35,   2.86987063e-19],
+       [  3.85919131e-34,  -2.67689520e-36,   4.76599224e-34, ...,
+         -3.28023838e-22,   1.04385435e-33,  -1.55541549e-19],
+       [  4.37077376e-35,  -1.51001123e-37,  -2.71232600e-35, ...,
+          3.46886629e-23,   4.39513989e-36,   1.64485861e-20],
        ..., 
-       [  1.10299323e-33,   2.19110337e-36,  -2.62507411e-33, ...,
-          1.75002031e-22,  -9.57167048e-35,   6.41448217e-20],
-       [ -1.93493838e-33,   2.09036246e-36,   9.35050370e-34, ...,
-          4.68577824e-22,   5.26274095e-34,   3.01536344e-19],
-       [  2.56400599e-33,   2.98922670e-35,  -1.84407722e-32, ...,
-         -1.09687011e-21,   8.49902671e-33,  -4.70000263e-19]])</pre>
+       [  4.56307656e-34,   2.65532722e-36,  -2.22148683e-33, ...,
+          2.58734696e-22,   6.05895041e-35,   1.22686191e-19],
+       [  5.59931232e-34,  -2.34745436e-36,  -2.72920315e-34, ...,
+          2.32293454e-22,   1.93138556e-34,   1.10148347e-19],
+       [ -1.95972474e-33,  -2.82194722e-36,   6.27663931e-33, ...,
+         -5.41659572e-22,  -1.62670210e-33,  -2.56842823e-19]])</pre>
 </div>
 
 </div>
@@ -24833,7 +24577,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Converting the reconstructed matrix back to a Pandas dataframe</span>
@@ -24851,7 +24595,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">cf_preds_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -24867,7 +24611,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[54]:</div>
+<div class="prompt output_prompt">Out[59]:</div>
 
 
 
@@ -24892,7 +24636,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CFRecommender</span><span class="p">:</span>
@@ -24932,11 +24676,26 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cf_recommender_model</span> <span class="o">=</span> <span class="n">CFRecommender</span><span class="p">(</span><span class="n">cf_preds_df</span><span class="p">,</span> <span class="n">projects</span><span class="p">)</span>
-<span class="n">cf_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Evaluating Collaborative Filtering (SVD Matrix Factorization) model...&#39;</span><span class="p">)</span>
+<span class="n">cf_global_metrics</span><span class="p">,</span> <span class="n">cf_detailed_results_df</span> <span class="o">=</span> <span class="n">model_evaluator</span><span class="o">.</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">cf_recommender_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Global metrics:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cf_global_metrics</span><span class="p">)</span>
+<span class="n">cf_detailed_results_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -24949,7 +24708,71 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[56]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Evaluating Collaborative Filtering (SVD Matrix Factorization) model...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-62-465eeb17e6b5&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Evaluating Collaborative Filtering (SVD Matrix Factorization) model...&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>cf_global_metrics<span class="ansi-blue-fg">,</span> cf_detailed_results_df <span class="ansi-blue-fg">=</span> model_evaluator<span class="ansi-blue-fg">.</span>evaluate_model<span class="ansi-blue-fg">(</span>cf_recommender_model<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;\nGlobal metrics:\n%s&#39;</span> <span class="ansi-blue-fg">%</span> cf_global_metrics<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> cf_detailed_results_df<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-26-0d2382b346fe&gt;</span> in <span class="ansi-cyan-fg">evaluate_model</span><span class="ansi-blue-fg">(self, model)</span>
+<span class="ansi-green-intense-fg ansi-bold">     77</span>             <span class="ansi-red-fg">#if idx % 100 == 0 and idx &gt; 0:</span>
+<span class="ansi-green-intense-fg ansi-bold">     78</span>             <span class="ansi-red-fg">#    print(&#39;%d users processed&#39; % idx)</span>
+<span class="ansi-green-fg">---&gt; 79</span><span class="ansi-red-fg">             </span>person_metrics <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>evaluate_model_for_user<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">,</span> donor_id<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     80</span>             person_metrics<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Donor ID&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> donor_id
+<span class="ansi-green-intense-fg ansi-bold">     81</span>             people_metrics<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>person_metrics<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-26-0d2382b346fe&gt;</span> in <span class="ansi-cyan-fg">evaluate_model_for_user</span><span class="ansi-blue-fg">(self, model, donor_id)</span>
+<span class="ansi-green-intense-fg ansi-bold">     28</span>             person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     29</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 30</span><span class="ansi-red-fg">             </span>person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>int<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     31</span>         donated_projects_count_testset <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>person_donated_projects_testset<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     32</span> 
+
+<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;0053a266af3840dbf8b033a7c8331cf1&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cf_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[63]:</div>
 
 
 
@@ -24981,73 +24804,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>6.018746e-17</td>
-      <td>0084b9a5073eb8ca0c4f0dfcd53b7116</td>
-      <td>support mrs. chase's classroom</td>
-      <td>"tell me and i forget. teach me and i remember...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.156122e-17</td>
+      <td>7.573340e-17</td>
       <td>0002d777804d485adbcca7aad4ad96c5</td>
       <td>document cameras for student centered learning!</td>
       <td>has someone ever tried to explain a concept to...</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>3.230934e-17</td>
+      <td>006256a8e6df10612ff859688b67ed61</td>
+      <td>all hands on deck to see the siege of boston!</td>
+      <td>taunton public schools is a low income/hi...</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>3.824306e-17</td>
-      <td>0070ee086716b857f879a1d25fd92eea</td>
-      <td>science and engineering made exciting through ...</td>
-      <td>just imagine reinventing the wheel, recreating...</td>
+      <td>2.348905e-17</td>
+      <td>0031eb3832f55a565b91b467ccb961d4</td>
+      <td>may i have this dance, please?</td>
+      <td>the tango music begins. the students look at o...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3.619326e-17</td>
-      <td>0066d5cb75c16a32bb569097798d747e</td>
-      <td>urban middle school band program needs new ins...</td>
-      <td>in my school 50% of the students are socioecon...</td>
+      <td>2.020508e-17</td>
+      <td>004a152bbe8952ea5e9d5ef89c179933</td>
+      <td>claymation experimentation</td>
+      <td>after seeing my students sewing a jabba the hu...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.784154e-17</td>
-      <td>005075ae47f445887641378610b2f755</td>
-      <td>keep our brains and bodies moving, so we can l...</td>
-      <td>the average day in my class involves students ...</td>
+      <td>1.782544e-17</td>
+      <td>0029e426fd3296af4fc333580fa895fe</td>
+      <td>everyone needs an address, especially maniac m...</td>
+      <td>"...people will forget what you said, people w...</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2.197694e-17</td>
-      <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
-      <td>little people - big minds</td>
-      <td>my students are african american and hispanic....</td>
+      <td>1.414556e-17</td>
+      <td>0012d94ac914624f70e45fb22206e47e</td>
+      <td>best books of 2015</td>
+      <td>there's no such thing as a kid who hates readi...</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>2.058999e-17</td>
-      <td>0038ed8f7ee0db9fc6dbb5b0bbb93e68</td>
-      <td>purposeful play on the playground</td>
-      <td>our students come from a title i school in jer...</td>
+      <td>1.284150e-17</td>
+      <td>008847ff394b52dc61013213ac34ed44</td>
+      <td>help us document our artistic growth!</td>
+      <td>the art room is a very busy place!  it is full...</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>4.197816e-18</td>
-      <td>00388e34c088cfc273a32642b67c7e60</td>
-      <td>chromebooks for keyboarding</td>
-      <td>our students are some of the hardest working k...</td>
+      <td>1.197810e-17</td>
+      <td>0015703508d8a6703bc0d7f71027fdb4</td>
+      <td>lets all become aware of different cultures</td>
+      <td>help my students make a difference by acknowle...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>5.871580e-31</td>
-      <td>002cfe58517b9bccae89bbe0a8cca78b</td>
-      <td>technology as tools for special needs</td>
-      <td>i am a special education teacher for a 2nd - 4...</td>
+      <td>1.116876e-17</td>
+      <td>00173eb8e417bbe9fecc3da05893878c</td>
+      <td>a calming classroom carpet</td>
+      <td>"sometimes the questions are complicated and t...</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>2.993501e-31</td>
-      <td>000d803803ffec70bb1ed35d0d990ad0</td>
-      <td>a field trip of a lifetime</td>
-      <td>we have a fun, energetic bunch of third grade ...</td>
+      <td>1.081021e-17</td>
+      <td>004a094179fcb1dabc82c73d468c5ee7</td>
+      <td>astronomical astronomy</td>
+      <td>my classroom is a melting pot in a suburb of n...</td>
     </tr>
   </tbody>
 </table>
@@ -25062,23 +24885,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Evaluating Collaborative Filtering (SVD Matrix Factorization) model...&#39;</span><span class="p">)</span>
-<span class="n">cf_global_metrics</span><span class="p">,</span> <span class="n">cf_detailed_results_df</span> <span class="o">=</span> <span class="n">model_evaluator</span><span class="o">.</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">cf_recommender_model</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Global metrics:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cf_global_metrics</span><span class="p">)</span>
-<span class="n">cf_detailed_results_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cf_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
@@ -25094,7 +24901,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[58]:</div>
+<div class="prompt output_prompt">Out[64]:</div>
 
 
 
@@ -25126,73 +24933,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.149858e-16</td>
-      <td>004ff83766737c4751008ec1d9f0e608</td>
-      <td>3rd grade history, splash, and a whole lot of ...</td>
-      <td>the a. community and its students are a very s...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9.554036e-17</td>
+      <td>5.626676e-17</td>
       <td>0066d5cb75c16a32bb569097798d747e</td>
       <td>urban middle school band program needs new ins...</td>
       <td>in my school 50% of the students are socioecon...</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>5.440658e-17</td>
+      <td>00657a2af1154d87fb9b18548bcfe7b5</td>
+      <td>little scientists</td>
+      <td>in our classrooms we usually focus on reading ...</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>6.166103e-17</td>
-      <td>00177290279939fb33386b29198c450e</td>
-      <td>reader's workshop = instilling a love of readi...</td>
-      <td>we are a brand new charter school that has onl...</td>
+      <td>5.265602e-17</td>
+      <td>0066cfb9ded063e2078cf3973e2fa6aa</td>
+      <td>music for oyler</td>
+      <td>my students do not have money, but they do hav...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>5.569255e-17</td>
-      <td>000529aa89291c6825144b8dbbd399ab</td>
-      <td>tower gardens for our school</td>
-      <td>as service learning coordinators at our elemen...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3.198562e-17</td>
+      <td>3.667050e-17</td>
       <td>0031eb3832f55a565b91b467ccb961d4</td>
       <td>may i have this dance, please?</td>
       <td>the tango music begins. the students look at o...</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>2.994672e-17</td>
-      <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
-      <td>little people - big minds</td>
-      <td>my students are african american and hispanic....</td>
+      <th>4</th>
+      <td>3.628992e-17</td>
+      <td>006e4d8a02dde4626662fcfdb5a4bc41</td>
+      <td>1st full-year h.s. astrochemistry class in nat...</td>
+      <td>emerson was once asked what we would do if the...</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>2.759725e-17</td>
+      <th>5</th>
+      <td>3.154365e-17</td>
       <td>004a152bbe8952ea5e9d5ef89c179933</td>
       <td>claymation experimentation</td>
       <td>after seeing my students sewing a jabba the hu...</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>2.592523e-17</td>
-      <td>003425a6a801eec3e9f721b6dd297c3b</td>
-      <td>chemistry lab equipment</td>
-      <td>we are trying to engage more students in scien...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2.478789e-17</td>
+      <th>6</th>
+      <td>2.782861e-17</td>
       <td>0029e426fd3296af4fc333580fa895fe</td>
       <td>everyone needs an address, especially maniac m...</td>
       <td>"...people will forget what you said, people w...</td>
     </tr>
     <tr>
+      <th>7</th>
+      <td>2.208368e-17</td>
+      <td>0012d94ac914624f70e45fb22206e47e</td>
+      <td>best books of 2015</td>
+      <td>there's no such thing as a kid who hates readi...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.004782e-17</td>
+      <td>008847ff394b52dc61013213ac34ed44</td>
+      <td>help us document our artistic growth!</td>
+      <td>the art room is a very busy place!  it is full...</td>
+    </tr>
+    <tr>
       <th>9</th>
-      <td>2.115823e-17</td>
-      <td>005fd7a92673d0747831d9cf89e8a8f0</td>
-      <td>mission: library rejuvination</td>
-      <td>sitting at a desk for a sustained period of ti...</td>
+      <td>1.964907e-17</td>
+      <td>005075ae47f445887641378610b2f755</td>
+      <td>keep our brains and bodies moving, so we can l...</td>
+      <td>the average day in my class involves students ...</td>
     </tr>
   </tbody>
 </table>
@@ -25215,7 +25022,7 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">HybridRecommender</span><span class="p">:</span>
@@ -25260,7 +25067,7 @@ interacted -&gt; donated`</p>
 
         <span class="k">return</span> <span class="n">recommendations_df</span>
     
-<span class="n">hybrid_model</span> <span class="o">=</span> <span class="n">HybridRecommender</span><span class="p">(</span><span class="n">content_based_recommender_model</span><span class="p">,</span> <span class="n">cf_recommender_model</span><span class="p">,</span> <span class="n">projects</span><span class="p">)</span>
+<span class="n">hybrid_recommender_model</span> <span class="o">=</span> <span class="n">HybridRecommender</span><span class="p">(</span><span class="n">content_based_recommender_model</span><span class="p">,</span> <span class="n">cf_recommender_model</span><span class="p">,</span> <span class="n">projects</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -25270,10 +25077,10 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -25286,7 +25093,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[60]:</div>
+<div class="prompt output_prompt">Out[66]:</div>
 
 
 
@@ -25318,73 +25125,73 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>9.046021e-18</td>
-      <td>0084b9a5073eb8ca0c4f0dfcd53b7116</td>
-      <td>support mrs. chase's classroom</td>
-      <td>"tell me and i forget. teach me and i remember...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2.272464e-18</td>
+      <td>4.140913e-18</td>
       <td>0002d777804d485adbcca7aad4ad96c5</td>
       <td>document cameras for student centered learning!</td>
       <td>has someone ever tried to explain a concept to...</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>3.193710e-18</td>
+      <td>0012d94ac914624f70e45fb22206e47e</td>
+      <td>best books of 2015</td>
+      <td>there's no such thing as a kid who hates readi...</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>1.616407e-18</td>
-      <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
-      <td>little people - big minds</td>
-      <td>my students are african american and hispanic....</td>
+      <td>1.360073e-18</td>
+      <td>004a152bbe8952ea5e9d5ef89c179933</td>
+      <td>claymation experimentation</td>
+      <td>after seeing my students sewing a jabba the hu...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.346990e-18</td>
-      <td>0038ed8f7ee0db9fc6dbb5b0bbb93e68</td>
-      <td>purposeful play on the playground</td>
-      <td>our students come from a title i school in jer...</td>
+      <td>1.000583e-18</td>
+      <td>0012f7359b9705f46355a1c2b8ecbc1d</td>
+      <td>leveled books to help us read!</td>
+      <td>have you ever been told you need to read, but ...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3.147251e-32</td>
-      <td>006d4d96be19ec61c2a393377727953b</td>
-      <td>we want to read!</td>
-      <td>my 7th and 8th grade students come from povert...</td>
+      <td>9.602437e-19</td>
+      <td>003ed2285483b759f508f29076143447</td>
+      <td>language arts resources</td>
+      <td>"the more that you read, the more things you w...</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>7.293152e-33</td>
-      <td>0039443ff3323b93877cbdfe9ccae743</td>
-      <td>help!  we need headphones!</td>
-      <td>my third grade classroom is an active, lively ...</td>
+      <td>7.086202e-19</td>
+      <td>00173eb8e417bbe9fecc3da05893878c</td>
+      <td>a calming classroom carpet</td>
+      <td>"sometimes the questions are complicated and t...</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>5.311255e-33</td>
-      <td>0081553d51ed5d2529e2e38b0827133a</td>
-      <td>help us zoom up through the reading levels!</td>
-      <td>i am working hard to advance my first graders'...</td>
+      <td>4.475371e-19</td>
+      <td>0029c10b4286065811a493b54f85c97e</td>
+      <td>writing our way through kindergarten!!</td>
+      <td>my students are motivated and eager to learn. ...</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>4.240088e-33</td>
-      <td>0061985805f1348cdfe75ed2d8441104</td>
-      <td>more books = better readers!</td>
-      <td>perseverance.  resilience.  open-mindedness.  ...</td>
+      <td>4.055357e-19</td>
+      <td>003c964592d53d6089d0d8b0d3ee4c0a</td>
+      <td>to read or not to read to meet ccss? we want t...</td>
+      <td>students are in a rut with a lack of reading m...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>2.497565e-33</td>
-      <td>0008d8361e652b3b7c59e11bec470f26</td>
-      <td>please help us add graphic novels to our esl l...</td>
-      <td>our middle school is a diverse high-needs scho...</td>
+      <td>2.028943e-19</td>
+      <td>0072118edd7e0c5e84d23be2424bebd9</td>
+      <td>our learning is on fire!</td>
+      <td>we are an urban school with a large shelter (h...</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>1.932313e-33</td>
-      <td>0034fdff7d6f1fd118e6a20cde0a3afd</td>
-      <td>the more we read, the more we know, the smarte...</td>
-      <td>the first graders that i get the joy of teachi...</td>
+      <td>1.893010e-19</td>
+      <td>000f812b74edf002a44b73ba1153fd68</td>
+      <td>a second grade literary guild with magic tree ...</td>
+      <td>my second grades love the magic tree house ser...</td>
     </tr>
   </tbody>
 </table>
@@ -25399,10 +25206,10 @@ interacted -&gt; donated`</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -25415,7 +25222,7 @@ interacted -&gt; donated`</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[61]:</div>
+<div class="prompt output_prompt">Out[67]:</div>
 
 
 
@@ -25447,73 +25254,508 @@ interacted -&gt; donated`</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>7.206668e-18</td>
-      <td>00177290279939fb33386b29198c450e</td>
-      <td>reader's workshop = instilling a love of readi...</td>
-      <td>we are a brand new charter school that has onl...</td>
+      <td>4.437739e-18</td>
+      <td>00657a2af1154d87fb9b18548bcfe7b5</td>
+      <td>little scientists</td>
+      <td>in our classrooms we usually focus on reading ...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>5.205112e-18</td>
-      <td>000529aa89291c6825144b8dbbd399ab</td>
-      <td>tower gardens for our school</td>
-      <td>as service learning coordinators at our elemen...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.554591e-18</td>
-      <td>004ff83766737c4751008ec1d9f0e608</td>
-      <td>3rd grade history, splash, and a whole lot of ...</td>
-      <td>the a. community and its students are a very s...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2.107606e-18</td>
+      <td>2.409870e-18</td>
       <td>0012d94ac914624f70e45fb22206e47e</td>
       <td>best books of 2015</td>
       <td>there's no such thing as a kid who hates readi...</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>2.023780e-18</td>
-      <td>0078e2e24ae7e0de0817a5a17bd2f48c</td>
-      <td>little people - big minds</td>
-      <td>my students are african american and hispanic....</td>
+      <th>2</th>
+      <td>1.428185e-18</td>
+      <td>006e4d8a02dde4626662fcfdb5a4bc41</td>
+      <td>1st full-year h.s. astrochemistry class in nat...</td>
+      <td>emerson was once asked what we would do if the...</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>1.441625e-18</td>
-      <td>005fd7a92673d0747831d9cf89e8a8f0</td>
-      <td>mission: library rejuvination</td>
-      <td>sitting at a desk for a sustained period of ti...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>9.837948e-19</td>
+      <th>3</th>
+      <td>1.125692e-18</td>
       <td>0015703508d8a6703bc0d7f71027fdb4</td>
       <td>lets all become aware of different cultures</td>
       <td>help my students make a difference by acknowle...</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>8.550656e-19</td>
+      <th>4</th>
+      <td>9.784612e-19</td>
       <td>0029c10b4286065811a493b54f85c97e</td>
       <td>writing our way through kindergarten!!</td>
       <td>my students are motivated and eager to learn. ...</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>7.280602e-19</td>
+      <th>5</th>
+      <td>8.331664e-19</td>
       <td>003ed2285483b759f508f29076143447</td>
       <td>language arts resources</td>
       <td>"the more that you read, the more things you w...</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>6.206409e-19</td>
+      <th>6</th>
+      <td>7.596015e-19</td>
+      <td>005075ae47f445887641378610b2f755</td>
+      <td>keep our brains and bodies moving, so we can l...</td>
+      <td>the average day in my class involves students ...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7.048660e-19</td>
+      <td>004a094179fcb1dabc82c73d468c5ee7</td>
+      <td>astronomical astronomy</td>
+      <td>my classroom is a melting pot in a suburb of n...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>6.963180e-19</td>
       <td>0012f7359b9705f46355a1c2b8ecbc1d</td>
       <td>leveled books to help us read!</td>
       <td>have you ever been told you need to read, but ...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3.702714e-19</td>
+      <td>0052af01fcc5aa908b6e2aa537fb6462</td>
+      <td>binders for writing success</td>
+      <td>writing is an important part of my student's e...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Evaluating Hybrid model...&#39;</span><span class="p">)</span>
+<span class="n">hybrid_global_metrics</span><span class="p">,</span> <span class="n">hybrid_detailed_results_df</span> <span class="o">=</span> <span class="n">model_evaluator</span><span class="o">.</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">hybrid_recommender_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Global metrics:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">hybrid_global_metrics</span><span class="p">)</span>
+<span class="n">hybrid_detailed_results_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Evaluating Hybrid model...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-68-6233b950ee95&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Evaluating Hybrid model...&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>hybrid_global_metrics<span class="ansi-blue-fg">,</span> hybrid_detailed_results_df <span class="ansi-blue-fg">=</span> model_evaluator<span class="ansi-blue-fg">.</span>evaluate_model<span class="ansi-blue-fg">(</span>hybrid_recommender_model<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;\nGlobal metrics:\n%s&#39;</span> <span class="ansi-blue-fg">%</span> hybrid_global_metrics<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> hybrid_detailed_results_df<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-26-0d2382b346fe&gt;</span> in <span class="ansi-cyan-fg">evaluate_model</span><span class="ansi-blue-fg">(self, model)</span>
+<span class="ansi-green-intense-fg ansi-bold">     77</span>             <span class="ansi-red-fg">#if idx % 100 == 0 and idx &gt; 0:</span>
+<span class="ansi-green-intense-fg ansi-bold">     78</span>             <span class="ansi-red-fg">#    print(&#39;%d users processed&#39; % idx)</span>
+<span class="ansi-green-fg">---&gt; 79</span><span class="ansi-red-fg">             </span>person_metrics <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>evaluate_model_for_user<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">,</span> donor_id<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     80</span>             person_metrics<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Donor ID&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> donor_id
+<span class="ansi-green-intense-fg ansi-bold">     81</span>             people_metrics<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>person_metrics<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-26-0d2382b346fe&gt;</span> in <span class="ansi-cyan-fg">evaluate_model_for_user</span><span class="ansi-blue-fg">(self, model, donor_id)</span>
+<span class="ansi-green-intense-fg ansi-bold">     28</span>             person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     29</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 30</span><span class="ansi-red-fg">             </span>person_donated_projects_testset <span class="ansi-blue-fg">=</span> set<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>int<span class="ansi-blue-fg">(</span>donated_values_testset<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     31</span>         donated_projects_count_testset <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>person_donated_projects_testset<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     32</span> 
+
+<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;0053a266af3840dbf8b033a7c8331cf1&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Comparing-Methods">Comparing Methods<a class="anchor-link" href="#Comparing-Methods">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">global_metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">pop_global_metrics</span><span class="p">,</span> <span class="n">cf_global_metrics</span><span class="p">,</span> <span class="n">cb_global_metrics</span><span class="p">,</span> <span class="n">hybrid_global_metrics</span><span class="p">])</span> \
+                        <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;modelName&#39;</span><span class="p">)</span>
+<span class="n">global_metrics_df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-69-6afa89f0e147&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>global_metrics_df <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>DataFrame<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>pop_global_metrics<span class="ansi-blue-fg">,</span> cf_global_metrics<span class="ansi-blue-fg">,</span> cb_global_metrics<span class="ansi-blue-fg">,</span> hybrid_global_metrics<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>                         <span class="ansi-blue-fg">.</span>set_index<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;modelName&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> global_metrics_df
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pop_global_metrics&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">ax</span> <span class="o">=</span> <span class="n">global_metrics_df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">(),</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-70-f28f24cdefea&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;matplotlib inline&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>ax <span class="ansi-blue-fg">=</span> global_metrics_df<span class="ansi-blue-fg">.</span>transpose<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>plot<span class="ansi-blue-fg">(</span>kind<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;bar&#39;</span><span class="ansi-blue-fg">,</span> figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">15</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> ax<span class="ansi-blue-fg">.</span>patches<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     ax<span class="ansi-blue-fg">.</span>annotate<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;%.3f&#34;</span> <span class="ansi-blue-fg">%</span> p<span class="ansi-blue-fg">.</span>get_height<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>get_x<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> p<span class="ansi-blue-fg">.</span>get_width<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">/</span> <span class="ansi-cyan-fg">2.</span><span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">.</span>get_height<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> ha<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;center&#39;</span><span class="ansi-blue-fg">,</span> va<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;center&#39;</span><span class="ansi-blue-fg">,</span> xytext<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> textcoords<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;offset points&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;global_metrics_df&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Testing">Testing<a class="anchor-link" href="#Testing">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inspect_donations</span><span class="p">(</span><span class="n">donor_id</span><span class="p">,</span> <span class="n">test_set</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">test_set</span><span class="p">:</span>
+        <span class="n">donations_df</span> <span class="o">=</span> <span class="n">donations_test_indexed_df</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">donations_df</span> <span class="o">=</span> <span class="n">donations_train_indexed_df</span>
+    <span class="k">return</span> <span class="n">donations_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">donor_id</span><span class="p">]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">projects_df</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> 
+                                                      <span class="n">left_on</span> <span class="o">=</span> <span class="s1">&#39;Project ID&#39;</span><span class="p">,</span> 
+                                                      <span class="n">right_on</span> <span class="o">=</span> <span class="s1">&#39;Project ID&#39;</span><span class="p">)</span> \
+                          <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;eventStrength&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)[[</span><span class="s1">&#39;eventStrength&#39;</span><span class="p">,</span> 
+                                                                          <span class="s1">&#39;Project ID&#39;</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inspect_donations</span><span class="p">(</span><span class="n">donor1</span><span class="p">,</span> <span class="n">test_set</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-72-9a35bd08e689&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>inspect_donations<span class="ansi-blue-fg">(</span>donor1<span class="ansi-blue-fg">,</span> test_set<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">20</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-71-f6b01c0c9562&gt;</span> in <span class="ansi-cyan-fg">inspect_donations</span><span class="ansi-blue-fg">(donor_id, test_set)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>         donations_df <span class="ansi-blue-fg">=</span> donations_train_indexed_df
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">     return donations_df.loc[donor_id].merge(projects_df, how = &#39;left&#39;, 
+</span><span class="ansi-green-intense-fg ansi-bold">      7</span>                                                       left_on <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;Project ID&#39;</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span>                                                       right_on = &#39;Project ID&#39;) \
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">__getattr__</span><span class="ansi-blue-fg">(self, name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3079</span>             <span class="ansi-green-fg">if</span> name <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>_info_axis<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   3080</span>                 <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">[</span>name<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">-&gt; 3081</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> object<span class="ansi-blue-fg">.</span>__getattribute__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3082</span> 
+<span class="ansi-green-intense-fg ansi-bold">   3083</span>     <span class="ansi-green-fg">def</span> __setattr__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">AttributeError</span>: &#39;Series&#39; object has no attribute &#39;merge&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hybrid_recommender_model</span><span class="o">.</span><span class="n">recommend_projects</span><span class="p">(</span><span class="n">donor1</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[73]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>recStrengthHybrid</th>
+      <th>Project ID</th>
+      <th>Project Title</th>
+      <th>Project Essay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.140913e-18</td>
+      <td>0002d777804d485adbcca7aad4ad96c5</td>
+      <td>document cameras for student centered learning!</td>
+      <td>has someone ever tried to explain a concept to...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.193710e-18</td>
+      <td>0012d94ac914624f70e45fb22206e47e</td>
+      <td>best books of 2015</td>
+      <td>there's no such thing as a kid who hates readi...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.360073e-18</td>
+      <td>004a152bbe8952ea5e9d5ef89c179933</td>
+      <td>claymation experimentation</td>
+      <td>after seeing my students sewing a jabba the hu...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.000583e-18</td>
+      <td>0012f7359b9705f46355a1c2b8ecbc1d</td>
+      <td>leveled books to help us read!</td>
+      <td>have you ever been told you need to read, but ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9.602437e-19</td>
+      <td>003ed2285483b759f508f29076143447</td>
+      <td>language arts resources</td>
+      <td>"the more that you read, the more things you w...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7.086202e-19</td>
+      <td>00173eb8e417bbe9fecc3da05893878c</td>
+      <td>a calming classroom carpet</td>
+      <td>"sometimes the questions are complicated and t...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.475371e-19</td>
+      <td>0029c10b4286065811a493b54f85c97e</td>
+      <td>writing our way through kindergarten!!</td>
+      <td>my students are motivated and eager to learn. ...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.055357e-19</td>
+      <td>003c964592d53d6089d0d8b0d3ee4c0a</td>
+      <td>to read or not to read to meet ccss? we want t...</td>
+      <td>students are in a rut with a lack of reading m...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.028943e-19</td>
+      <td>0072118edd7e0c5e84d23be2424bebd9</td>
+      <td>our learning is on fire!</td>
+      <td>we are an urban school with a large shelter (h...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.893010e-19</td>
+      <td>000f812b74edf002a44b73ba1153fd68</td>
+      <td>a second grade literary guild with magic tree ...</td>
+      <td>my second grades love the magic tree house ser...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.877122e-19</td>
+      <td>00332491c9662b6327ae47d35a36be49</td>
+      <td>class size grows, class sets don't - part 2</td>
+      <td>since i have been an educator, each year has g...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.845891e-19</td>
+      <td>005a50a04dcaed07362b1bf2843857a5</td>
+      <td>mathematicians need materials to support think...</td>
+      <td>persevere! seek patterns! make sense! connect ...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.685142e-19</td>
+      <td>00198e2805e93c792b507309591ba1c8</td>
+      <td>small groups = big learning!</td>
+      <td>teaching in small groups has made a huge diffe...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1.467307e-19</td>
+      <td>000d0e173744a6cd46ad11dd9c48b167</td>
+      <td>you are the "apple" of my eye!</td>
+      <td>teaching: we're not in it for the income; we'r...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.123926e-19</td>
+      <td>0029901d46755587334db0f20b6ebc0b</td>
+      <td>teaching character through picture books</td>
+      <td>"if you can dream it, you can achieve it" -wal...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1.062077e-19</td>
+      <td>0024c6a649a5fd1ba12085332dfe81d0</td>
+      <td>making magic with the lunch bunch</td>
+      <td>i am a school counselor in a public, pre-kinde...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>8.664595e-20</td>
+      <td>005116ced117f51b10eb43863d789405</td>
+      <td>fantastic first graders in need of books!</td>
+      <td>the children in our school are very diverse, e...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6.142962e-20</td>
+      <td>002cb6a3a70ed7aa096c10ab9c26964d</td>
+      <td>how are you feeling today?</td>
+      <td>research states that about 20 percent of child...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>5.433717e-20</td>
+      <td>00412cae00ffac88b62854524c1fd7e4</td>
+      <td>let's learn through hands on math games!</td>
+      <td>my students are an amazing, curious, fun group...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>4.580149e-20</td>
+      <td>003de1b954ee9308b8510cb4d5893dda</td>
+      <td>"reading is important! " by todd parr</td>
+      <td>"i was able to take the messages...put them in...</td>
     </tr>
   </tbody>
 </table>
