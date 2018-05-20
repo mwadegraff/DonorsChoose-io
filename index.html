@@ -11770,7 +11770,24 @@ div#notebook {
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
+<script>
+  function code_toggle() {
+    if (code_shown){
+      $('div.input').hide('500');
+      $('#toggleButton').val('Show Code')
+    } else {
+      $('div.input').show('500');
+      $('#toggleButton').val('Hide Code')
+    }
+    code_shown = !code_shown
+  }
 
+  $( document ).ready(function(){
+    code_shown=false;
+    $('div.input').hide()
+  });
+</script>
+<form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11870,24 +11887,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 </div>
 
-</div><script>
-  function code_toggle() {
-    if (code_shown){
-      $('div.input').hide('500');
-      $('#toggleButton').val('Show Code')
-    } else {
-      $('div.input').show('500');
-      $('#toggleButton').val('Hide Code')
-    }
-    code_shown = !code_shown
-  }
-
-  $( document ).ready(function(){
-    code_shown=false;
-    $('div.input').hide()
-  });
-</script>
-<form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
