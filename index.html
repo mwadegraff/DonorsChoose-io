@@ -11770,7 +11770,24 @@ div#notebook {
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
+<script>
+  function code_toggle() {
+    if (code_shown){
+      $('div.input').hide('500');
+      $('#toggleButton').val('Show Code')
+    } else {
+      $('div.input').show('500');
+      $('#toggleButton').val('Hide Code')
+    }
+    code_shown = !code_shown
+  }
 
+  $( document ).ready(function(){
+    code_shown=false;
+    $('div.input').hide()
+  });
+</script>
+<form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11844,7 +11861,7 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -11871,21 +11888,6 @@ Much of the recommender work is based on a <a href="https://www.kaggle.com/gspmo
 </div>
 
 </div>
-HTML('''<script>
-code_show=true; 
-function code_toggle() {
-    if (code_show){
-        $('div.cell.code_cell.rendered.selected div.input').hide();
-    } else {
-        $('div.cell.code_cell.rendered.selected div.input').show();
-    }
-    code_show = !code_show
-} 
-
-$( document ).ready(code_toggle);
-</script>
-
-To show/hide this cell's raw code input, click <a href="javascript:code_toggle()">here</a>.''')H
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
